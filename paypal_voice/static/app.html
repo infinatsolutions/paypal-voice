@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PayPal Voice</title>
+<style>
+  :root {
+    --navy:#001c64; --blue:#003087; --bright:#0070e0; --sky:#e8f2ff; --gold:#ffd140;
+    --ink:#0b1a33; --muted:#5d6b82; --line:#dfe6f0; --bg:#f4f7fb; --card:#fff;
+    --ok:#0b7a3b; --warn:#a85d00; --err:#c4161c;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+  * { box-sizing:border-box; }
+  html, body { height:100%; }
+  body { margin:0; font:15px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif; color:var(--ink); background:var(--bg); display:flex; flex-direction:column; }
+  button { font:inherit; cursor:pointer; border:0; }
+  button:disabled { opacity:.45; cursor:default; }
+
+  header { background:linear-gradient(100deg, var(--navy), var(--blue) 70%); color:#fff; padding:12px 22px; display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+  .brand { font-size:20px; font-weight:700; letter-spacing:-.2px; }
+  .brand span { color:#7cc4ff; font-weight:600; }
+  .pill { font-size:12px; padding:4px 10px; border-radius:99px; background:rgba(255,255,255,.14); white-space:nowrap; }
+  .pill.live { background:var(--err); }
+  header .grow { flex:1; }
+  .hbtn { background:#fff; color:var(--blue); font-weight:650; padding:8px 16px; border-radius:99px; }
+  .hbtn.gold { background:var(--gold); color:var(--navy); }
+  .hbtn.ghost { background:transparent; color:#fff; border:1px solid rgba(255,255,255,.45); }
+
+  main { flex:1; min-height:0; display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); gap:16px; padding:16px 22px 18px; max-width:1500px; width:100%; margin:0 auto; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:16px; min-height:0; display:flex; flex-direction:column; }
+  .card h2 { font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); margin:0; padding:13px 16px 9px; font-weight:650; display:flex; align-items:center; gap:8px; }
+  .card h2 .right { margin-left:auto; text-transform:none; letter-spacing:0; font-weight:500; }
+
+  /* conversation */
+  #log { flex:1; overflow:auto; padding:6px 16px 12px; display:flex; flex-direction:column; gap:10px; }
+  .msg { max-width:86%; padding:10px 14px; border-radius:16px; }
+  .you { align-self:flex-end; background:var(--bright); color:#fff; border-bottom-right-radius:5px; }
+  .pv { align-self:flex-start; background:var(--sky); border-bottom-left-radius:5px; }
+  .pv.error { background:#fdecec; }
+  .sect { align-self:center; font-size:11.5px; color:var(--muted); text-transform:uppercase; letter-spacing:.08em; padding:6px 0 0; }
+  .lines { margin:8px 0 0; padding:8px 0 0 0; border-top:1px solid #cfe0f5; font-size:13.5px; list-style:none; }
+  .lines li { padding:1px 0; }
+  .lines b { display:block; margin-bottom:2px; }
+  .calls { margin-top:8px; display:flex; flex-direction:column; gap:3px; }
+  .call { font:11.5px/1.4 var(--mono); color:#27405f; display:flex; gap:6px; align-items:baseline; overflow:hidden; }
+  .call .p { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .m { font-weight:700; font-size:10.5px; padding:1px 5px; border-radius:4px; background:#d7e8ff; color:var(--blue); flex:none; }
+  .m.POST { background:#ffe9b8; color:#6b4300; }
+  .st { flex:none; color:var(--ok); font-weight:700; } .st.bad { color:var(--err); }
+  .row { display:flex; gap:7px; flex-wrap:wrap; margin-top:9px; }
+  .btn { background:var(--bright); color:#fff; font-weight:650; padding:7px 15px; border-radius:99px; font-size:14px; }
+  .btn.alt { background:#fff; color:var(--bright); border:1px solid var(--bright); }
+  .chip { background:#fff; color:var(--ink); border:1px solid var(--line); padding:5px 11px; border-radius:99px; font-size:12.5px; }
+  .chip:hover { border-color:var(--bright); color:var(--bright); }
+
+  /* composer */
+  #composer { border-top:1px solid var(--line); padding:12px 16px 14px; }
+  #bar { display:flex; gap:10px; align-items:center; }
+  #mic { width:58px; height:58px; border-radius:50%; background:var(--bright); color:#fff; flex:none; display:grid; place-items:center; position:relative; transition:background .15s; }
+  #mic svg { width:26px; height:26px; }
+  #mic.on { background:var(--err); }
+  #mic.on::after { content:""; position:absolute; inset:-7px; border-radius:50%; border:3px solid rgba(196,22,28,.35); animation:ring 1.1s infinite; }
+  @keyframes ring { from { transform:scale(.92); opacity:1; } to { transform:scale(1.18); opacity:0; } }
+  #text { flex:1; min-width:0; font:inherit; padding:13px 16px; border:1px solid var(--line); border-radius:99px; outline:none; background:#fff; }
+  #text:focus { border-color:var(--bright); box-shadow:0 0 0 3px rgba(0,112,224,.14); }
+  #status { font-size:12.5px; color:var(--muted); margin-top:8px; display:flex; gap:16px; flex-wrap:wrap; align-items:center; min-height:20px; }
+  #status label { display:flex; gap:5px; align-items:center; cursor:pointer; }
+  #state { font-weight:650; color:var(--blue); }
+
+  /* right column */
+  #right { display:grid; grid-template-rows:auto minmax(0,1fr); gap:16px; min-height:0; }
+  #pipe { padding:2px 16px 14px; display:grid; gap:8px; }
+  .step { display:grid; grid-template-columns:74px minmax(0,1fr); gap:10px; align-items:start; font-size:13.5px; }
+  .step .k { font-size:11px; text-transform:uppercase; letter-spacing:.07em; color:var(--muted); padding-top:2px; }
+  .step .v { min-width:0; overflow-wrap:anywhere; }
+  .tier { font-size:10.5px; font-weight:700; padding:1px 6px; border-radius:4px; margin-left:6px; background:#e3f5e9; color:var(--ok); }
+  .tier.T1 { background:#fff1cf; color:var(--warn); } .tier.T2 { background:#fde0e0; color:var(--err); }
+  #meter { height:6px; background:#e6ecf5; border-radius:99px; margin:0 16px 8px; overflow:hidden; }
+  #meter i { display:block; height:100%; width:0; background:linear-gradient(90deg, var(--bright), #36c5f0); transition:width .4s; }
+  #eps { overflow:auto; padding:0 8px 10px; }
+  .ep { display:grid; grid-template-columns:44px minmax(0,1fr) auto; gap:8px; align-items:center; padding:6px 8px; border-radius:9px; width:100%; text-align:left; background:none; color:inherit; }
+  .ep:hover { background:#f1f6fd; }
+  .ep .m { text-align:center; }
+  .ep .t { min-width:0; }
+  .ep .t b { font-weight:600; font-size:13.5px; display:block; }
+  .ep .t code { font:11px var(--mono); color:var(--muted); display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .ep .n { font-size:11.5px; color:var(--muted); min-width:22px; text-align:right; }
+  .ep.hit .n { color:var(--ok); font-weight:700; }
+  .ep.hit .t b::after { content:" ✓"; color:var(--ok); }
+  .ep.flash { animation:flash 1.2s; }
+  .ep.off { opacity:.5; }
+  @keyframes flash { from { background:#cfe6ff; } to { background:transparent; } }
+
+  @media (max-width: 900px) { main { grid-template-columns:1fr; } #right { grid-template-rows:auto 380px; } #log { min-height:300px; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">PayPal <span>Voice</span></div>
+  <span id="env" class="pill">connecting…</span>
+  <span id="count" class="pill"></span>
+  <div class="grow"></div>
+  <button id="demo" class="hbtn gold">▶ Run guided demo</button>
+  <button id="reset" class="hbtn ghost">Start over</button>
+</header>
+
+<main>
+  <section class="card">
+    <h2>Conversation</h2>
+    <div id="log" aria-live="polite"></div>
+    <div id="composer">
+      <div id="bar">
+        <button id="mic" title="Talk (Space)" aria-label="Talk">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3" fill="currentColor"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>
+        </button>
+        <input id="text" placeholder="Say or type a command, like “who owes me money”" autocomplete="off">
+        <button id="send" class="btn">Send</button>
+      </div>
+      <div id="status">
+        <span id="state">Ready</span>
+        <label><input type="checkbox" id="speak" checked> Speak replies</label>
+        <label title="Keeps listening. Start with “Hey PayPal”."><input type="checkbox" id="hands"> Hands-free: “Hey PayPal”</label>
+        <span id="note"></span>
+      </div>
+    </div>
+  </section>
+
+  <div id="right">
+    <section class="card">
+      <h2>Voice → API → Voice <span class="right" id="lat"></span></h2>
+      <div id="pipe">
+        <div class="step"><div class="k">Heard</div><div class="v" id="p-heard">—</div></div>
+        <div class="step"><div class="k">Intent</div><div class="v" id="p-intent">—</div></div>
+        <div class="step"><div class="k">PayPal API</div><div class="v" id="p-api">—</div></div>
+        <div class="step"><div class="k">Spoken</div><div class="v" id="p-said">—</div></div>
+      </div>
+    </section>
+    <section class="card">
+      <h2>PayPal endpoints by voice <span class="right" id="cov"></span></h2>
+      <div id="meter"><i></i></div>
+      <div id="eps"></div>
+    </section>
+  </div>
+</main>
+
+<script>
+"use strict";
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[c]));
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const newSid = () => "pv-" + Math.random().toString(36).slice(2, 12) + Date.now().toString(36);
+
+let sid = newSid(), expecting = "", busy = false, demoRunning = false, simulator = false;
+const hits = {};                      // op -> times called
+let EPS = [];
+
+// An older PayPal Voice build left a cache-first service worker on localhost:8000. Remove any that control this page.
+if ("serviceWorker" in navigator) navigator.serviceWorker.getRegistrations().then(rs => rs.forEach(r => r.unregister())).catch(() => {});
+if (window.caches) caches.keys().then(ks => ks.forEach(k => caches.delete(k))).catch(() => {});
+
+/* ---------------------------------------------------------------- speech out */
+let voice = null, speaking = false;
+function pickVoice() {
+  const vs = speechSynthesis.getVoices().filter(v => /^en[-_]/i.test(v.lang));
+  const want = [/Samantha/i, /Ava/i, /Allison/i, /Google US English/i, /Aria/i, /Jenny/i];
+  voice = want.map(rx => vs.find(v => rx.test(v.name))).find(Boolean) || vs.find(v => /en[-_]US/i.test(v.lang)) || vs[0] || null;
+}
+if ("speechSynthesis" in window) { pickVoice(); speechSynthesis.onvoiceschanged = pickVoice; }
+
+function say(text) {
+  return new Promise(done => {
+    if (!$("#speak").checked || !("speechSynthesis" in window) || !text) return done();
+    stopListening();
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    if (voice) u.voice = voice;
+    u.rate = 1.06;
+    let finished = false;
+    const end = () => { if (finished) return; finished = true; speaking = false; setState(); done(); };
+    u.onend = end; u.onerror = end;
+    setTimeout(end, 2500 + text.length * 85);        // some browsers never fire onend
+    speaking = true; setState("Speaking…");
+    speechSynthesis.speak(u);
+  });
+}
+
+/* ---------------------------------------------------------------- speech in */
+const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+let rec = null, listening = false, interim = "", lastFinal = { t: "", at: 0 }, awakeUntil = 0;
+const WAKE = /^\s*(?:(?:hey|hi|hay|ok|okay|yo|a)[\s,]+)?(?:pay\s?pal|paypal|pay\s?pow|papal)\b[\s,.!?]*/i;
+
+function setState(s) {
+  $("#state").textContent = s || (listening ? ($("#hands").checked && !expecting && Date.now() > awakeUntil ? "Waiting for “Hey PayPal”…" : "Listening…") : "Ready");
+  $("#mic").classList.toggle("on", listening);
+}
+
+function heard(text, alts) {
+  text = text.trim();
+  if (!text) return;
+  if (text === lastFinal.t && Date.now() - lastFinal.at < 1500) return;      // Safari can deliver a final result twice
+  lastFinal = { t: text, at: Date.now() };
+  if ($("#hands").checked) {
+    const woke = WAKE.test(text);
+    const inDialog = !!expecting || Date.now() < awakeUntil;
+    if (!woke && !inDialog) return;                                           // not addressed to us
+    text = text.replace(WAKE, "").trim();
+    alts = alts.map(a => a.replace(WAKE, "").trim());
+    if (!text) { awakeUntil = Date.now() + 9000; setState("Yes? Listening…"); return; }
+  }
+  turn(text, alts);
+}
+
+if (SR) {
+  rec = new SR();
+  rec.lang = "en-US"; rec.interimResults = true; rec.maxAlternatives = 4; rec.continuous = false;
+  rec.onstart = () => { listening = true; interim = ""; setState(); };
+  rec.onresult = e => {
+    const r = e.results[e.results.length - 1];
+    interim = r[0].transcript;
+    $("#text").value = interim;
+    if (r.isFinal) {
+      const alts = Array.from(r).slice(1).map(x => x.transcript);
+      interim = ""; $("#text").value = "";
+      heard(r[0].transcript, alts);
+    }
+  };
+  rec.onerror = e => {
+    if (e.error === "not-allowed" || e.error === "service-not-allowed") {
+      $("#hands").checked = false;
+      $("#note").textContent = "Microphone is blocked. Allow it for this page in the browser's address bar, then try again.";
+    } else if (e.error !== "no-speech" && e.error !== "aborted") $("#note").textContent = "Microphone: " + e.error;
+  };
+  rec.onend = () => {
+    listening = false;
+    if (interim.trim()) { const t = interim; interim = ""; $("#text").value = ""; heard(t, []); }   // some browsers never mark a result final
+    setState();
+    if ($("#hands").checked && !speaking && !busy) setTimeout(startListening, 250);
+  };
+} else {
+  $("#mic").disabled = true; $("#hands").disabled = true;
+  $("#note").textContent = "This browser has no speech recognition. Use Chrome, Edge or Safari, or type.";
+}
+
+function startListening() {
+  if (!rec || listening || speaking) return;
+  $("#note").textContent = "";
+  try { speechSynthesis.cancel(); rec.start(); } catch { /* already started */ }
+}
+function stopListening() { if (rec && listening) { try { rec.abort(); } catch {} } }
+
+$("#mic").onclick = () => listening ? rec.stop() : startListening();
+$("#hands").onchange = e => { if (e.target.checked) startListening(); else stopListening(); setState(); };
+document.addEventListener("keydown", e => {
+  if (e.code === "Space" && document.activeElement !== $("#text") && !e.repeat) { e.preventDefault(); $("#mic").click(); }
+});
+
+/* ---------------------------------------------------------------- conversation */
+function bubble(cls, html) {
+  const d = document.createElement("div");
+  d.className = "msg " + cls; d.innerHTML = html;
+  $("#log").appendChild(d); $("#log").scrollTop = 1e9;
+  return d;
+}
+const shortPath = p => p.replace(/^https?:\/\/[^/]+/, "").split("?")[0];
+const callHtml = a => `<div class="call"><span class="m ${a.method}">${a.method}</span><span class="p" title="${esc(a.path)}">${esc(shortPath(a.path))}</span><span class="st ${a.status >= 400 ? "bad" : ""}">${a.status}</span><span>${a.ms}ms</span></div>`;
+
+async function post(path, body) {
+  const res = await fetch(path, { method:"POST", headers:{ "Content-Type":"application/json" }, body:JSON.stringify(body) });
+  if (!res.ok) throw new Error("HTTP " + res.status);
+  return res.json();
+}
+
+function mark(api) {
+  for (const a of api || []) {
+    hits[a.op] = (hits[a.op] || 0) + 1;
+    const el = document.getElementById("ep-" + a.op);
+    if (el) { el.classList.add("hit"); el.classList.remove("flash"); void el.offsetWidth; el.classList.add("flash"); el.querySelector(".n").textContent = "×" + hits[a.op]; el.scrollIntoView({ block:"nearest", behavior:"smooth" }); }
+  }
+  const n = EPS.filter(e => hits[e.op]).length;
+  $("#cov").textContent = `${n} of ${EPS.length} called this session`;
+  $("#meter i").style.width = (EPS.length ? 100 * n / EPS.length : 0) + "%";
+}
+
+function pipeline(r, ms) {
+  const cap = EPS.find(e => e.capability === r.capability);
+  $("#p-heard").textContent = r.heard ? `“${r.heard}”` : "(button)";
+  $("#p-intent").innerHTML = r.capability ? `<b>${esc(r.capability)}</b>${cap && cap.tier ? `<span class="tier ${cap.tier}">${{T0:"read", T1:"confirm", T2:"confirm twice"}[cap.tier] || cap.tier}</span>` : ""} · ${esc(r.state)}${r.expecting ? " · waiting for " + esc(r.expecting.replace("slot:", "")) : ""}` : esc(r.state);
+  $("#p-api").innerHTML = (r.api || []).length ? r.api.map(callHtml).join("") : `<span style="color:var(--muted)">${r.state === "confirming" || r.state === "asking" ? "No call yet. Waiting for your answer." : r.state === "handoff" ? "No PayPal API exists for this." : "No call needed."}</span>`;
+  $("#p-said").textContent = r.speech;
+  $("#lat").textContent = ms != null ? `${ms} ms round trip` : "";
+}
+
+async function render(r, ms) {
+  let h = esc(r.speech);
+  const d = r.display || {}, lines = (d.lines || []).filter(x => x && x !== r.speech);
+  if (lines.length && r.state !== "confirming") h += `<ul class="lines">${d.title ? `<b>${esc(d.title)}</b>` : ""}${lines.map(x => `<li>${esc(x)}</li>`).join("")}</ul>`;
+  if ((r.api || []).length) h += `<div class="calls">${r.api.map(callHtml).join("")}</div>`;
+  const el = bubble("pv" + (r.state === "error" ? " error" : ""), h);
+  const row = document.createElement("div"); row.className = "row";
+  const add = (label, cls, fn) => { const b = document.createElement("button"); b.className = cls; b.textContent = label; b.onclick = () => { if (cls !== "chip") row.querySelectorAll("button").forEach(x => x.disabled = true); fn(); }; row.appendChild(b); return b; };
+  let auto = null;
+  for (const a of r.actions || []) {
+    if (a.type === "open_url" && a.purpose === "approve_payment" && a.simulated) auto = add("Approve in PayPal (simulated)", "btn", () => act("/voice/approve-sim", { session_id: sid }));
+    else if (a.type === "open_url") add({ approve_payment:"Open PayPal to approve", sign_in:"Sign in with PayPal", handoff:"Open in PayPal" }[a.purpose] || "Open link", "btn alt", () => window.open(a.url, "_blank", "noopener"));
+    else if (a.type === "second_factor") auto = add("Confirm on screen", "btn", () => act("/voice/second-factor", { session_id: sid, token: a.token }));
+    else if (a.type === "copy" && a.text) add("Copy link", "btn alt", () => navigator.clipboard && navigator.clipboard.writeText(a.text));
+  }
+  if (r.expecting === "confirm") { add("Yes", "btn", () => turn("yes")); add("No", "btn alt", () => turn("no")); }
+  for (const s of (r.suggestions || []).slice(0, 4)) add(s, "chip", () => turn(s));
+  if (row.children.length) el.appendChild(row);
+  $("#log").scrollTop = 1e9;
+  expecting = r.expecting || "";
+  if (expecting || $("#hands").checked) awakeUntil = Date.now() + 12000;
+  mark(r.api); pipeline(r, ms);
+  await say(r.speech);
+  return auto;
+}
+
+async function act(path, body) {
+  busy = true; setState("Working…");
+  try { const t0 = performance.now(); const r = await post(path, body); busy = false; await render(r, Math.round(performance.now() - t0)); }
+  catch { busy = false; bubble("pv error", "I can't reach the PayPal Voice server. Is start.sh still running?"); }
+  setState(); if ($("#hands").checked) startListening();
+}
+
+async function turn(text, alternatives = []) {
+  text = (text || "").trim();
+  if (!text || busy) return null;
+  stopListening(); if ("speechSynthesis" in window) speechSynthesis.cancel();
+  bubble("you", esc(text));
+  busy = true; setState("Thinking…");
+  let auto = null;
+  try {
+    const t0 = performance.now();
+    const r = await post("/voice/turn", { session_id: sid, text: text.slice(0, 500), alternatives: alternatives.filter(Boolean).slice(0, 5) });
+    busy = false;
+    auto = await render(r, Math.round(performance.now() - t0));
+  } catch {
+    busy = false;
+    bubble("pv error", "I can't reach the PayPal Voice server. Is start.sh still running?");
+  }
+  setState();
+  if ($("#hands").checked && !demoRunning) startListening();
+  return auto;
+}
+
+$("#send").onclick = () => { const t = $("#text").value; $("#text").value = ""; turn(t); };
+$("#text").addEventListener("keydown", e => { if (e.key === "Enter") $("#send").click(); });
+
+/* ---------------------------------------------------------------- guided demo + reset */
+async function reset(quiet) {
+  if ("speechSynthesis" in window) speechSynthesis.cancel();
+  stopListening();
+  if (simulator) { try { await post("/demo/reset", {}); } catch {} }
+  sid = newSid(); expecting = ""; for (const k in hits) delete hits[k];
+  $("#log").innerHTML = "";
+  document.querySelectorAll(".ep").forEach(e => { e.classList.remove("hit", "flash"); e.querySelector(".n").textContent = ""; });
+  mark([]);
+  for (const id of ["p-heard", "p-intent", "p-api", "p-said"]) $("#" + id).textContent = "—";
+  $("#lat").textContent = "";
+  if (!quiet) greet();
+}
+
+async function runDemo() {
+  if (demoRunning) { demoRunning = false; return; }
+  demoRunning = true; $("#demo").textContent = "■ Stop demo"; $("#hands").checked = false;
+  await reset(true);
+  let script = [];
+  try { script = await (await fetch("/demo")).json(); } catch {}
+  for (const step of script) {
+    if (!demoRunning) break;
+    if (step.section) { const d = document.createElement("div"); d.className = "sect"; d.textContent = step.section; $("#log").appendChild(d); continue; }
+    const auto = await turn(step.say);
+    if (!demoRunning) break;
+    if (auto) { await sleep(500); auto.click(); while (busy || speaking) await sleep(150); }
+    await sleep($("#speak").checked ? 350 : 900);
+  }
+  if (demoRunning) bubble("pv", `Demo complete. ${EPS.filter(e => hits[e.op]).length} of ${EPS.length} PayPal endpoints were called by voice.`);
+  demoRunning = false; $("#demo").textContent = "▶ Run guided demo";
+}
+$("#demo").onclick = runDemo;
+$("#reset").onclick = () => { demoRunning = false; reset(false); };
+
+function greet() {
+  bubble("pv", simulator
+    ? "Hi. This is PayPal Voice on the built-in PayPal simulator, so nothing real moves. Press the mic and ask, tap any endpoint on the right, or run the guided demo."
+    : "Hi. This is PayPal Voice, connected to PayPal. Press the mic and ask, or tap any endpoint on the right.");
+}
+
+/* ---------------------------------------------------------------- boot */
+(async () => {
+  try {
+    const h = await (await fetch("/healthz")).json();
+    simulator = !!h.simulator;
+    $("#env").textContent = simulator ? "Simulator" : `PayPal ${h.env}`;
+    if (h.env === "live") $("#env").classList.add("live");
+    $("#count").textContent = `${h.capabilities} voice commands · ${h.endpoints} PayPal endpoints`;
+    if (!simulator) $("#reset").textContent = "New conversation";
+    EPS = await (await fetch("/endpoints")).json();
+    $("#eps").innerHTML = EPS.map(e => `<button class="ep ${e.status === "ready" ? "" : "off"}" id="ep-${esc(e.op)}" data-say="${esc(e.say)}" title="Say: “${esc(e.say)}”${e.status === "ready" ? "" : " (needs PayPal approval for this app)"}">
+        <span class="m ${e.method}">${e.method}</span><span class="t"><b>${esc(e.label)}</b><code>${esc(e.path)}</code></span><span class="n"></span></button>`).join("");
+    $("#eps").addEventListener("click", e => { const b = e.target.closest(".ep"); if (b && b.dataset.say) turn(b.dataset.say); });
+    mark([]);
+    greet();
+    $("#note").textContent = SR ? "Press the mic or Space to talk." : $("#note").textContent;
+  } catch {
+    $("#env").textContent = "offline";
+    bubble("pv error", "I can't reach the PayPal Voice server. Run ./start.sh and reload this page.");
+  }
+})();
+</script>
+</body>
+</html>

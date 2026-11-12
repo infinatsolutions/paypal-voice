@@ -1,0 +1,57 @@
+# PayPal Voice demo: every line is something you can say. 32 PayPal REST endpoints get exercised.
+# --- balance and activity
+what's my balance
+what came in this week
+did jordan pay me
+# --- invoices
+who owes me money
+jordan's invoice details
+remind the first one
+yes
+bill maya 45 dollars for a framed print
+yes
+mark priya's invoice as paid
+yes
+show all my invoices
+cancel jordan's invoice
+yes
+# --- refunds
+refund sam
+yes
+did the refund go through
+# --- disputes
+any disputes
+what's the dispute about
+accept the claim
+yes
+# --- subscriptions and catalog
+show my subscriptions
+when does maya's subscription renew
+pause maya's subscription
+yes
+resume maya's subscription
+yes
+cancel maya's subscription
+yes
+what plans do i offer
+list my products
+# --- payment links, payouts, currency
+make a payment link for 25 dollars for a small print
+yes
+pay out 30 dollars to jordan@example.com for framing work
+yes
+did the payout go through
+how much is 100 dollars in euros
+# --- personal payments (PayPal limited release)
+who am i signed in as
+what's the fee to send 50 dollars to sam
+can i send money to mexico
+send 20 dollars to sam for coffee
+yes
+did my payment go through
+send forty to my mom
+never mind
+# --- things PayPal has no API for: an honest handoff
+how much cashback do i have
+transfer 100 to my bank
+help

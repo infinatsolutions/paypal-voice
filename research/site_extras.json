@@ -1,0 +1,79 @@
+{
+  "_source": "developer.paypal.com /api/<name>/<version>/schema.json and /limited-release/*.md, read 2026-11-08 through the PayPal developer site. Operations here are ones NOT present in the GitHub spec snapshot in specs/ (commit dated 2026-04-07).",
+  "apis": {
+    "transaction-search/v1 (site v1.10)": {
+      "availability": "GA_OWN_ACCOUNT",
+      "notes": [
+        "To use the API on behalf of third parties, you must be part of the PayPal partner network.",
+        "Transactions and balances take up to 3 hours to appear; history covers the previous 3 years.",
+        "List transactions: start_date and end_date required, RFC 3339 with seconds; maximum range 31 days."
+      ],
+      "ops": [
+        ["GET", "/v1/reporting/get-balance-net-summary", "accounting.balanceNetSummary.get", "List all balance and net activity summary", "reporting/dataapiserv/balance-net-activity/read", "from_date*, to_date*, locale*"],
+        ["GET", "/v1/reporting/get-daily-summary", "accounting.dailySummary.get", "List all daily summary", "reporting/dataapiserv/daily/read", "from_date*, to_date*, locale*"]
+      ]
+    },
+    "invoicing/v2 (site v2.12)": {
+      "availability": "GA_OWN_ACCOUNT",
+      "notes": ["Recurring invoices, conditional rules and auto-reminders also list the scope invoicing/internal."],
+      "ops": [
+        ["GET", "/v2/invoicing/invoices/{id}/conditional-rules", "get-invoice-conditional-rules", "Retrieves all conditional rules for a given Invoice", "invoicing/invoices/read", ""],
+        ["POST", "/v2/invoicing/invoices/{id}/conditional-rules", "create-conditional-rules", "Create conditional rules", "invoicing/invoices/readwrite", ""],
+        ["GET", "/v2/invoicing/invoices/{id}/conditional-rules/{conditional_rule_id}", "get-invoice-conditional-rule-by-id", "Retrieve the conditional rule details for an Invoice", "invoicing/invoices/read", ""],
+        ["PUT", "/v2/invoicing/invoices/{id}/conditional-rules/{conditional_rule_id}", "update-conditional-rule", "Fully update conditional rule", "invoicing/invoices/readwrite", ""],
+        ["DELETE", "/v2/invoicing/invoices/{id}/conditional-rules/{conditional_rule_id}", "delete-invoice-conditional-rule", "Delete the conditional rule details from the Invoice", "invoicing/invoices/readwrite", ""],
+        ["POST", "/v2/invoicing/recurring-invoices", "recurring_invoices.create", "Create a recurring invoice series", "invoicing/invoices/readwrite", ""],
+        ["GET", "/v2/invoicing/recurring-invoices/{id}", "recurring_invoices.get", "Get recurring invoice series details", "invoicing/invoices/readwrite", ""],
+        ["PUT", "/v2/invoicing/recurring-invoices/{id}", "recurring_invoices.update", "Update recurring invoice series details", "invoicing/invoices/readwrite", ""],
+        ["DELETE", "/v2/invoicing/recurring-invoices/{id}", "recurring_invoices.delete", "Delete recurring invoice series", "invoicing/invoices/readwrite", ""],
+        ["POST", "/v2/invoicing/recurring-invoices/{id}/activate", "recurring_invoices.activate", "Activate recurring invoice series", "invoicing/invoices/readwrite", ""],
+        ["POST", "/v2/invoicing/recurring-invoices/{id}/cancel", "recurring_invoices.cancel", "Cancel an active recurring invoice series", "invoicing/invoices/readwrite", ""],
+        ["GET", "/v2/invoicing/recurring-invoices/{id}/conditional-rules", "get-recurring-invoice-conditional-rules", "Retrieves all conditional rules for a given recurring invoice", "invoicing/invoices/read", ""],
+        ["POST", "/v2/invoicing/recurring-invoices/{id}/conditional-rules", "create-recurring-invoice-conditional-rules", "Create conditional rules for a recurring invoice", "invoicing/invoices/readwrite", ""],
+        ["GET", "/v2/invoicing/recurring-invoices/{id}/conditional-rules/{conditional_rule_id}", "get-recurring-invoice-conditional-rule-by-id", "Retrieve a conditional rule for a recurring invoice", "invoicing/invoices/read", ""],
+        ["PUT", "/v2/invoicing/recurring-invoices/{id}/conditional-rules/{conditional_rule_id}", "update-recurring-invoice-conditional-rule", "Fully update a conditional rule for a recurring invoice", "invoicing/invoices/readwrite", ""],
+        ["DELETE", "/v2/invoicing/recurring-invoices/{id}/conditional-rules/{conditional_rule_id}", "delete-recurring-invoice-conditional-rule", "Delete a conditional rule from a recurring invoice", "invoicing/invoices/readwrite", ""],
+        ["POST", "/v2/invoicing/setup-reminders", "auto-reminder-configuration.setup", "Setup auto reminder configuration", "invoicing/invoices/readwrite", ""],
+        ["GET", "/v2/invoicing/reminders", "auto-reminder-configuration.get-all", "Get all invoice auto reminder configuration", "invoicing/invoices/readwrite", ""],
+        ["GET", "/v2/invoicing/reminders/{id}", "auto-reminder-configuration.get", "Retrieve an invoice auto reminder configuration", "invoicing/invoices/readwrite", ""],
+        ["PUT", "/v2/invoicing/reminders/{id}", "auto-reminder-configuration.update", "Update invoice auto reminder configuration", "invoicing/invoices/readwrite", ""],
+        ["POST", "/v2/invoicing/reminders/{id}/suspend", "auto-reminder-configuration.suspend", "Suspend invoice auto reminder configuration", "invoicing/invoices/readwrite", ""],
+        ["POST", "/v2/invoicing/reminders/{id}/resume", "auto-reminder-configuration.resume", "Resume invoice auto reminder configuration", "invoicing/invoices/readwrite", ""],
+        ["POST", "/v2/invoicing/invoices/{id}/cancel-reminders", "invoices.cancel-reminders", "Cancel auto reminders for an invoice", "invoicing/invoices/readwrite", ""],
+        ["POST", "/v2/invoicing/search-recurring-invoices", "recurring_invoices.search", "Search recurring invoices series", "invoicing/invoices/readwrite", ""]
+      ]
+    },
+    "orders/v2 (site v2.36)": {
+      "availability": "GA_OWN_ACCOUNT",
+      "ops": [["GET", "/v2/checkout/callback/certs/{cert_id}", "certs.get", "Get public callback verification certificate", "", ""]]
+    },
+    "subscriptions/v1 (site v1.11)": {
+      "availability": "GA_OWN_ACCOUNT",
+      "ops": [["GET", "/v1/billing/subscriptions", "subscriptions.list", "List subscriptions", "subscriptions", ""]]
+    },
+    "payment-links-buttons/v1 (site v1.8)": {
+      "availability": "GA_OWN_ACCOUNT",
+      "ops": [
+        ["POST", "/v1/checkout/payment-resources", "payment-resources.post", "Creates a payment resource for a single-item purchase", "checkout/payment-resources/readwrite", "body: integration_mode*=LINK, type*=BUY_NOW, reusable=MULTIPLE, return_url, line_items[{name, description, unit_amount, ...}]"],
+        ["GET", "/v1/checkout/payment-resources", "payment-resources.get.list", "List payment resources", "checkout/payment-resources/read", "page_size, page_token, total_required"],
+        ["GET", "/v1/checkout/payment-resources/{id}", "payment-resources.get.byId", "Retrieve a payment resource", "checkout/payment-resources/read", ""],
+        ["PUT", "/v1/checkout/payment-resources/{id}", "payment-resources.put.byId", "Replace a payment resource", "checkout/payment-resources/readwrite", ""],
+        ["DELETE", "/v1/checkout/payment-resources/{id}", "payment-resources.delete.byId", "Delete a payment resource", "checkout/payment-resources/readwrite", ""]
+      ]
+    },
+    "pricing/v2 Currency Exchange (site v2.17)": {
+      "availability": "GA_OWN_ACCOUNT",
+      "ops": [["POST", "/v2/pricing/quote-exchange-rates", "quote_exchange_rates", "Create Exchange Rate Quote", "pricing/quote-exchange-rates/read", "body: quote_items*[{base_currency, base_amount, quote_currency, markup_percent, fx_id}]"]]
+    },
+    "identity/v1 (site v1.0)": {
+      "availability": "LIMITED_RELEASE",
+      "notes": ["Log in with PayPal: authorization-code flow; the returned claims depend on the scopes enabled for the client ID. OpenID configuration lists scopes email, address, phone, openid, profile, https://uri.paypal.com/services/wallet/sendmoney, .../payments/futurepayments, .../expresscheckout."],
+      "ops": [["GET", "/v1/identity/openidconnect/userinfo", "userinfo.get", "Show user profile details", "(user token)", "schema=openid"]]
+    },
+    "usage-based-billing/v1 (site v1.0.0)": {
+      "availability": "OUT_OF_SCOPE",
+      "notes": ["75 merchant metering and billing operations (billing entities, metrics, plans, customers, subscriptions, wallets for prepaid credits, credit notes, entitlements). Not a consumer surface; excluded from the voice registry."],
+      "ops": []
+    }
+  }
+}

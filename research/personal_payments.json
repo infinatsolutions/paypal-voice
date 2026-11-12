@@ -1,0 +1,73 @@
+{
+  "_source": [
+    "v1: https://developer.paypal.com/api/limited-release/personal-payments/v1/schema.json (OpenAPI 3.2, info.version 1.19), read 2026-11-08",
+    "v2: https://developer.paypal.com/limited-release/personal-payments-v2.md (integration guide; no public schema.json; /api/limited-release/personal-payments/v2/schema.json returns 404), read 2026-11-08",
+    "fees: /limited-release/personal-payments/who-pays-fees.md; regulatory: /limited-release/personal-payments/rtr.md; phone/account payees: /limited-release/personal-payments/fulfill-mobile.md"
+  ],
+  "availability": "LIMITED_RELEASE",
+  "approval": "You must be approved to use the Personal Payments v2 API. Request approval by email: p2papiapproval@paypal.com",
+  "do_not_use_when": "Sender and receiver are the same entity (no deposits or withdrawals to the same user).",
+  "integration_patterns": {
+    "PAYPAL_UI": "Recommended for all partners except large enterprises. Create a personal payment token, redirect the user to PayPal's initiate_payment link with &return_url=..., PayPal authenticates the user and handles regulatory contingencies. Return URL receives status, transactionId, returnCode.",
+    "PARTNER_UI": "For large enterprises with an in-house compliance team. Extra authentication and explicit user consent; partner must keep UI compliant with government regulations (fines or shutdown if not)."
+  },
+  "fees": {
+    "rule": "Friends-and-family sends are free except card-funded; purchases carry a fee the payee always pays. fee.payer is PAYER or PAYEE; PURCHASE + PAYER is not allowed.",
+    "by_instrument": {"HOLDING": "no fee", "BANK_ACCOUNT": "no fee", "PAYMENT_CARD": "fee", "CREDIT": "fee"},
+    "cross_border": "currency conversion fee"
+  },
+  "regulatory": {
+    "remittance_transfer_rule": "Transfers over $15 USD to a person or company in a foreign country. Funding-options response may carry regulatory_information.remittance_transfer_rule.action = DISPLAY_TRANSACTION_DISCLOSURES (review phase); fulfillment response carries disclosure_details (fees, estimated_funds_arrival, state_agency). The app must display all provided information.",
+    "unilateral_rtr_error": "TRANSACTION_DECLINED_ADDITIONAL_PAYEE_INFO_REQUIRED -> resend funding-options with payee.name and payee.country_code.",
+    "travel_rule": "US-based sender sending $3,000 USD or more; checked at fulfillment; funding options may include a travel_rule object."
+  },
+  "payee_types": ["EMAIL", "PHONE (E.164)", "ACCOUNT_NUMBER", "EXTERNAL_IDENTIFIER"],
+  "mobile_payee_regions": ["AU", "BR", "CA", "ES", "FR", "GB", "IT", "MX", "MY", "SG", "US"],
+  "v1": {
+    "base": "https://api-m.sandbox.paypal.com",
+    "ops": [
+      {"op": "personal-payments.assess-capabilities", "m": "POST", "p": "/v1/payments/personal-payments/assess-capabilities", "scope": "consumer/personal-payments/capabilities/read",
+       "body": "{payer_country_code*, payee_country_codes:[string], criteria:{include:[PERSONAL_PAYMENT_TYPE|PURCHASE_PAYMENT_TYPE], exclude:[...]}}",
+       "resp": "{payer_country_code*, supported_entities*:[PAYPAL], payment_types*:[PERSONAL|PURCHASE], currency_codes*:[...], payee_countries:[{country_code, supported_entities, payment_types, currency_codes}]}"},
+      {"op": "personal-payments.evaluate-eligibility", "m": "POST", "p": "/v1/payments/personal-payments/evaluate-eligibility", "scope": "wallet/sendmoney/evaluate-eligibility",
+       "body": "{payer:{country_code}, payee:{country_code}} (from guide)", "resp": "{payer:{payment_types, currencies}, payee:{payment_types, currencies}} (from guide)"},
+      {"op": "personal-payments.funding-options", "m": "POST", "p": "/v1/payments/personal-payments/funding-options", "scope": "wallet/sendmoney + wallet/financial-instruments/view + payments/onetouchpayment",
+       "body": "{amount*:{currency*, value*}, payee*:{id*, type*:EMAIL|PHONE|ACCOUNT_NUMBER|EXTERNAL_IDENTIFIER, name, country_code, is_paypal_account}, intent:PAYMENT|AUTHORIZATION, payer:{shipping_address_id}, payment_type*:PERSONAL|PURCHASE, note_to_payee} (guide samples also send fee:{payer})",
+       "resp": "{funding_options:{payee*, options*:[{id, fee, sources[], funding_mode, estimated_funds_arrival, regulatory_information}], installments, payment_type*, regulatory_information, links}}"},
+      {"op": "personal-payments.post", "m": "POST", "p": "/v1/payments/personal-payments", "scope": "wallet/sendmoney + wallet/financial-instruments/view + payments/onetouchpayment",
+       "body": "{funding_option_id*, installment_term, note_to_payee}",
+       "resp": "{personal_payment:{payment_id*, create_time*, payee*, payment_amount*, total_fee, total_amount_paid*, total_amount_received*, payment_type*, note_to_payee, estimated_funds_arrival*, regulatory_information}}"},
+      {"op": "personal-payments.pay", "m": "POST", "p": "/v1/payments/personal-payments/pay", "scope": "wallet/sendmoney + payments/onetouchpayment",
+       "body": "same as funding-options", "resp": "same as personal-payments.post", "note": "Creates a payment and moves money using the default funding configured for the account and partner."},
+      {"op": "personal-payments.get", "m": "GET", "p": "/v1/payments/personal-payments/{transaction_id}", "scope": "consumer/personal-payments-tokens/readwrite",
+       "resp": "{payment_id*, create_time*, payee*, payment_amount*, total_fee, total_amount_paid*, total_amount_received*, payment_type*, note_to_payee, estimated_funds_arrival*, regulatory_information:{status:UNDER_REVIEW, remittance_transfer_rule}}"},
+      {"op": "personal-payment-tokens.post", "m": "POST", "p": "/v1/payments/personal-payment-tokens", "scope": "consumer/personal-payments-tokens/readwrite",
+       "body": "same as funding-options", "resp": "{id, create_time, expiry_time, links:[{rel: initiate_payment}]}"},
+      {"op": "personal-payment-tokens.get", "m": "GET", "p": "/v1/payments/personal-payment-tokens/{id}", "scope": "", "resp": "{id, create_time, expiry_time, links}"},
+      {"op": "personal-payments.authorizations", "m": "POST", "p": "/v1/payments/personal-payments/authorizations", "scope": "consumer/personal-payments/authorizations/readwrite",
+       "body": "{funding_option_id, amount:{currency*, value*}, payee:{...}, payer:{shipping_address_id}, payment_type, note_to_payee}", "resp": "{id, capture_id, create_time, status:AUTHORIZED|CAPTURED|VOIDED, payee, payment_amount, total_fee, total_amount_paid, total_amount_received, payment_type, note_to_payee, links}"},
+      {"op": "authorizations.capture", "m": "POST", "p": "/v1/payments/personal-payments/authorizations/{id}/capture", "scope": "consumer/personal-payments/authorizations/readwrite", "body": "{amount:{currency*, value*}} (omit to capture all)"},
+      {"op": "authorizations.void", "m": "POST", "p": "/v1/payments/personal-payments/authorizations/{authorization_id}/void", "scope": "consumer/personal-payments/authorizations/readwrite"},
+      {"op": "authorizations.get", "m": "GET", "p": "/v1/payments/personal-payments/authorizations/{id}", "scope": ""},
+      {"op": "payments.refunds", "m": "POST", "p": "/v1/payments/refunds", "scope": "personal-payments/refunds/readwrite + payments/refund",
+       "body": "{transaction_id, amount:{currency_code*, value*}, external_tracking_id, description}", "resp": "{id*, transaction_id, amount*, payer, amount_details, external_tracking_id, sender_refund_id, sender_transaction_id, description, create_time, status*:COMPLETED|PENDING}"}
+    ],
+    "scopes_declared": ["wallet/sendmoney", "wallet/sendmoney/donate", "wallet/financial-instruments/view", "wallet/sendmoney/evaluate-eligibility", "consumer/personal-payments/capabilities/read", "consumer/personal-payments/authorizations/readwrite", "consumer/personal-payments-tokens/readwrite"]
+  },
+  "v2": {
+    "ops": [
+      {"op": "v2.tokens.create", "m": "POST", "p": "/v2/personal-payments/tokens", "pattern": "PAYPAL_UI",
+       "body": "{receiver:{id, type:EMAIL}, amount:{currency_code, value}, payment_type:PERSONAL|PURCHASE, intent:CAPTURE, note_to_receiver, external_reference_id}",
+       "resp": "{id:'PP-...', status:'CREATED', sender, receiver, amount, payment_type, intent, external_reference_id, note_to_receiver, facilitator, links:[{rel:self}, {rel:initiate_payment, href:'.../myaccount/transfer/send/external/pisp?token_id=PP-...'}]}"},
+      {"op": "v2.tokens.get", "m": "GET", "p": "/v2/personal-payments/tokens/{token_id}", "pattern": "PAYPAL_UI",
+       "resp": "{id, create_time, status:'COMPLETED', amounts_breakdown, sender, receiver, amount, payment_type, intent}"},
+      {"op": "v2.evaluate-funding-options", "m": "POST", "p": "/v2/personal-payments/evaluate-funding-options", "pattern": "PARTNER_UI",
+       "body": "{sender:{account_id}, receiver:{id, type}, amount:{currency_code, value}, payment_type, intent:CAPTURE}",
+       "resp": "{funding_options:[{id, funding_sources:[{instrument_type:BANK, bank:{...}, amount}], amounts_breakdown:{sender, receiver, funding_mode}}], backup_funding_sources:[{instrument_type:CARD, card}], contingencies:[{action:OBTAIN_REAL_TIME_BALANCE_CONSENT, real_time_balance_consent:{links:[{rel:consent}]}}]}"},
+      {"op": "v2.payments.create", "m": "POST", "p": "/v2/personal-payments/payments", "pattern": "PARTNER_UI", "headers": ["PayPal-Request-Id"],
+       "body": "{sender:{account_id}, receiver:{id, type}, amount:{currency_code, value}, payment_type, intent:CAPTURE} (guide says pass the funding option id; the sample omits the field: UNVERIFIED)",
+       "resp": "{id, create_time, status:'COMPLETED', amounts_breakdown, sender, receiver, amount, payment_type, intent}"}
+    ],
+    "redirect": "GET {initiate_payment href}&return_url=<url> ; one pair of parameters allowed in return_url; success returns status=success, transactionId, returnCode=SUCCESS"
+  }
+}

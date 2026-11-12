@@ -1,0 +1,2772 @@
+[
+ {
+  "api": "Subscriptions",
+  "version": "GitHub v1.8",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v1/billing/plans",
+  "operation": "plans.create",
+  "summary": "Create plan",
+  "scopes": [
+   "subscriptions"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Subscriptions",
+  "version": "GitHub v1.8",
+  "source": "github-spec",
+  "method": "GET",
+  "path": "/v1/billing/plans",
+  "operation": "plans.list",
+  "summary": "List plans",
+  "scopes": [
+   "subscriptions"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T0",
+  "voice": [
+   "plans"
+  ]
+ },
+ {
+  "api": "Subscriptions",
+  "version": "GitHub v1.8",
+  "source": "github-spec",
+  "method": "GET",
+  "path": "/v1/billing/plans/{id}",
+  "operation": "plans.get",
+  "summary": "Show plan details",
+  "scopes": [
+   "subscriptions"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T0",
+  "voice": []
+ },
+ {
+  "api": "Subscriptions",
+  "version": "GitHub v1.8",
+  "source": "github-spec",
+  "method": "PATCH",
+  "path": "/v1/billing/plans/{id}",
+  "operation": "plans.patch",
+  "summary": "Update plan",
+  "scopes": [
+   "subscriptions"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Subscriptions",
+  "version": "GitHub v1.8",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v1/billing/plans/{id}/activate",
+  "operation": "plans.activate",
+  "summary": "Activate plan",
+  "scopes": [
+   "subscriptions"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Subscriptions",
+  "version": "GitHub v1.8",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v1/billing/plans/{id}/deactivate",
+  "operation": "plans.deactivate",
+  "summary": "Deactivate plan",
+  "scopes": [
+   "subscriptions"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T2",
+  "voice": []
+ },
+ {
+  "api": "Subscriptions",
+  "version": "GitHub v1.8",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v1/billing/plans/{id}/update-pricing-schemes",
+  "operation": "plans.update-pricing-schemes",
+  "summary": "Update pricing",
+  "scopes": [
+   "subscriptions"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Subscriptions",
+  "version": "GitHub v1.8",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v1/billing/subscriptions",
+  "operation": "subscriptions.create",
+  "summary": "Create subscription",
+  "scopes": [
+   "subscriptions"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T2",
+  "voice": []
+ },
+ {
+  "api": "Subscriptions",
+  "version": "GitHub v1.8",
+  "source": "github-spec",
+  "method": "GET",
+  "path": "/v1/billing/subscriptions/{id}",
+  "operation": "subscriptions.get",
+  "summary": "Show subscription details",
+  "scopes": [
+   "subscriptions"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T0",
+  "voice": [
+   "subscription_details"
+  ]
+ },
+ {
+  "api": "Subscriptions",
+  "version": "GitHub v1.8",
+  "source": "github-spec",
+  "method": "PATCH",
+  "path": "/v1/billing/subscriptions/{id}",
+  "operation": "subscriptions.patch",
+  "summary": "Update subscription",
+  "scopes": [
+   "subscriptions"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Subscriptions",
+  "version": "GitHub v1.8",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v1/billing/subscriptions/{id}/revise",
+  "operation": "subscriptions.revise",
+  "summary": "Revise plan or quantity of subscription",
+  "scopes": [
+   "subscriptions"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Subscriptions",
+  "version": "GitHub v1.8",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v1/billing/subscriptions/{id}/suspend",
+  "operation": "subscriptions.suspend",
+  "summary": "Suspend subscription",
+  "scopes": [
+   "subscriptions"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T2",
+  "voice": [
+   "subscription_pause"
+  ]
+ },
+ {
+  "api": "Subscriptions",
+  "version": "GitHub v1.8",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v1/billing/subscriptions/{id}/cancel",
+  "operation": "subscriptions.cancel",
+  "summary": "Cancel subscription",
+  "scopes": [
+   "subscriptions"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T2",
+  "voice": [
+   "subscription_cancel"
+  ]
+ },
+ {
+  "api": "Subscriptions",
+  "version": "GitHub v1.8",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v1/billing/subscriptions/{id}/activate",
+  "operation": "subscriptions.activate",
+  "summary": "Activate subscription",
+  "scopes": [
+   "subscriptions"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": [
+   "subscription_resume"
+  ]
+ },
+ {
+  "api": "Subscriptions",
+  "version": "GitHub v1.8",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v1/billing/subscriptions/{id}/capture",
+  "operation": "subscriptions.capture",
+  "summary": "Capture authorized payment on subscription",
+  "scopes": [
+   "subscriptions"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T2",
+  "voice": []
+ },
+ {
+  "api": "Subscriptions",
+  "version": "GitHub v1.8",
+  "source": "github-spec",
+  "method": "GET",
+  "path": "/v1/billing/subscriptions/{id}/transactions",
+  "operation": "subscriptions.transactions",
+  "summary": "List transactions for subscription",
+  "scopes": [
+   "subscriptions"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T0",
+  "voice": []
+ },
+ {
+  "api": "Catalog Products",
+  "version": "GitHub v1.0",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v1/catalogs/products",
+  "operation": "products.create",
+  "summary": "Create product",
+  "scopes": [
+   "subscriptions"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Catalog Products",
+  "version": "GitHub v1.0",
+  "source": "github-spec",
+  "method": "GET",
+  "path": "/v1/catalogs/products",
+  "operation": "products.list",
+  "summary": "List products",
+  "scopes": [
+   "subscriptions"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T0",
+  "voice": [
+   "products"
+  ]
+ },
+ {
+  "api": "Catalog Products",
+  "version": "GitHub v1.0",
+  "source": "github-spec",
+  "method": "GET",
+  "path": "/v1/catalogs/products/{product_id}",
+  "operation": "products.get",
+  "summary": "Show product details",
+  "scopes": [
+   "subscriptions"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T0",
+  "voice": []
+ },
+ {
+  "api": "Catalog Products",
+  "version": "GitHub v1.0",
+  "source": "github-spec",
+  "method": "PATCH",
+  "path": "/v1/catalogs/products/{product_id}",
+  "operation": "products.patch",
+  "summary": "Update product",
+  "scopes": [
+   "subscriptions"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Orders",
+  "version": "GitHub v2.32",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v2/checkout/orders",
+  "operation": "orders.create",
+  "summary": "Create order",
+  "scopes": [
+   "payments/orders/deprecating-jssdk-migration-for-limited-merchants",
+   "payments/payment"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Orders",
+  "version": "GitHub v2.32",
+  "source": "github-spec",
+  "method": "GET",
+  "path": "/v2/checkout/orders/{id}",
+  "operation": "orders.get",
+  "summary": "Show order details",
+  "scopes": [
+   "payments/orders/deprecating-jssdk-migration-for-limited-merchants",
+   "payments/payment"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T0",
+  "voice": []
+ },
+ {
+  "api": "Orders",
+  "version": "GitHub v2.32",
+  "source": "github-spec",
+  "method": "PATCH",
+  "path": "/v2/checkout/orders/{id}",
+  "operation": "orders.patch",
+  "summary": "Update order",
+  "scopes": [
+   "payments/orders/deprecating-jssdk-migration-for-limited-merchants",
+   "payments/payment"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Orders",
+  "version": "GitHub v2.32",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v2/checkout/orders/{id}/confirm-payment-source",
+  "operation": "orders.confirm",
+  "summary": "Confirm the Order",
+  "scopes": [
+   "payments/initiatepayment",
+   "payments/orders/client_sdk_orders_api",
+   "payments/payment"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Orders",
+  "version": "GitHub v2.32",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v2/checkout/orders/{id}/authorize",
+  "operation": "orders.authorize",
+  "summary": "Authorize payment for order",
+  "scopes": [
+   "payments/orders/deprecating-jssdk-migration-for-limited-merchants",
+   "payments/payment"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T2",
+  "voice": []
+ },
+ {
+  "api": "Orders",
+  "version": "GitHub v2.32",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v2/checkout/orders/{id}/capture",
+  "operation": "orders.capture",
+  "summary": "Capture payment for order",
+  "scopes": [
+   "payments/orders/deprecating-jssdk-migration-for-limited-merchants",
+   "payments/payment"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T2",
+  "voice": []
+ },
+ {
+  "api": "Orders",
+  "version": "GitHub v2.32",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v2/checkout/orders/{id}/track",
+  "operation": "orders.track.create",
+  "summary": "Add tracking information for an Order.",
+  "scopes": [
+   "payments/payment"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Orders",
+  "version": "GitHub v2.32",
+  "source": "github-spec",
+  "method": "PATCH",
+  "path": "/v2/checkout/orders/{id}/trackers/{tracker_id}",
+  "operation": "orders.trackers.patch",
+  "summary": "Update or cancel tracking information for an order",
+  "scopes": [
+   "payments/payment"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Orders",
+  "version": "GitHub v2.32",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v2/checkout/orders/order-update-callback",
+  "operation": "server.callback",
+  "summary": "Receive updated order information via callback URL",
+  "scopes": [
+   "payments/payment"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Disputes",
+  "version": "GitHub v1.11",
+  "source": "github-spec",
+  "method": "GET",
+  "path": "/v1/customer/disputes",
+  "operation": "disputes.list",
+  "summary": "List disputes",
+  "scopes": [
+   "disputes/read",
+   "disputes/read-buyer",
+   "disputes/read-ebay",
+   "disputes/read-partner",
+   "disputes/read-seller"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T0",
+  "voice": [
+   "disputes"
+  ]
+ },
+ {
+  "api": "Disputes",
+  "version": "GitHub v1.11",
+  "source": "github-spec",
+  "method": "GET",
+  "path": "/v1/customer/disputes/{id}",
+  "operation": "disputes.get",
+  "summary": "Show dispute details",
+  "scopes": [
+   "disputes/read",
+   "disputes/read-buyer",
+   "disputes/read-ebay",
+   "disputes/read-partner",
+   "disputes/read-seller"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T0",
+  "voice": [
+   "dispute_details"
+  ]
+ },
+ {
+  "api": "Disputes",
+  "version": "GitHub v1.11",
+  "source": "github-spec",
+  "method": "PATCH",
+  "path": "/v1/customer/disputes/{id}",
+  "operation": "disputes.patch",
+  "summary": "Partially update dispute",
+  "scopes": [
+   "disputes/update-seller"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Disputes",
+  "version": "GitHub v1.11",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v1/customer/disputes/{id}/provide-evidence",
+  "operation": "disputes.provide-evidence",
+  "summary": "Provide evidence",
+  "scopes": [
+   "disputes/update-buyer",
+   "disputes/update-partner",
+   "disputes/update-seller"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Disputes",
+  "version": "GitHub v1.11",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v1/customer/disputes/{id}/appeal",
+  "operation": "disputes.appeal",
+  "summary": "Appeal dispute",
+  "scopes": [
+   "disputes/update-buyer",
+   "disputes/update-seller"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Disputes",
+  "version": "GitHub v1.11",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v1/customer/disputes/{id}/accept-claim",
+  "operation": "disputes.accept-claim",
+  "summary": "Accept claim",
+  "scopes": [
+   "disputes/update-seller"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T2",
+  "voice": [
+   "dispute_accept"
+  ]
+ },
+ {
+  "api": "Disputes",
+  "version": "GitHub v1.11",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v1/customer/disputes/{id}/adjudicate",
+  "operation": "disputes.adjudicate",
+  "summary": "Settle dispute",
+  "scopes": [
+   "disputes/update-buyer",
+   "disputes/update-seller"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T2",
+  "voice": []
+ },
+ {
+  "api": "Disputes",
+  "version": "GitHub v1.11",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v1/customer/disputes/{id}/require-evidence",
+  "operation": "disputes.require-evidence",
+  "summary": "Update dispute status",
+  "scopes": [
+   "disputes/update-buyer",
+   "disputes/update-seller"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Disputes",
+  "version": "GitHub v1.11",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v1/customer/disputes/{id}/escalate",
+  "operation": "disputes.escalate",
+  "summary": "Escalate dispute to claim",
+  "scopes": [
+   "disputes/update-buyer",
+   "disputes/update-seller"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T2",
+  "voice": []
+ },
+ {
+  "api": "Disputes",
+  "version": "GitHub v1.11",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v1/customer/disputes/{id}/send-message",
+  "operation": "disputes.send-message",
+  "summary": "Send message about dispute to other party",
+  "scopes": [
+   "disputes/update-buyer",
+   "disputes/update-seller"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T2",
+  "voice": []
+ },
+ {
+  "api": "Disputes",
+  "version": "GitHub v1.11",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v1/customer/disputes/{id}/make-offer",
+  "operation": "disputes.make-offer",
+  "summary": "Make offer to resolve dispute",
+  "scopes": [
+   "disputes/update-buyer",
+   "disputes/update-seller"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T2",
+  "voice": []
+ },
+ {
+  "api": "Disputes",
+  "version": "GitHub v1.11",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v1/customer/disputes/{id}/accept-offer",
+  "operation": "disputes.accept-offer",
+  "summary": "Accept offer to resolve dispute",
+  "scopes": [
+   "disputes/update-buyer"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T2",
+  "voice": []
+ },
+ {
+  "api": "Disputes",
+  "version": "GitHub v1.11",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v1/customer/disputes/{id}/deny-offer",
+  "operation": "disputes.deny-offer",
+  "summary": "Deny offer to resolve dispute",
+  "scopes": [
+   "disputes/update-buyer"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Disputes",
+  "version": "GitHub v1.11",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v1/customer/disputes/{id}/acknowledge-return-item",
+  "operation": "disputes.acknowledge-return-item",
+  "summary": "Acknowledge returned item",
+  "scopes": [
+   "disputes/update-seller"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Disputes",
+  "version": "GitHub v1.11",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v1/customer/disputes/{id}/provide-supporting-info",
+  "operation": "disputes.provide-supporting-info",
+  "summary": "Provide supporting information for dispute",
+  "scopes": [
+   "disputes/update-buyer",
+   "disputes/update-partner",
+   "disputes/update-seller"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Partner Referrals",
+  "version": "GitHub v2.5",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v2/customer/partner-referrals",
+  "operation": "partner-referrals.create",
+  "summary": "Create partner referral",
+  "scopes": [
+   "customer/partner-referrals/readwrite"
+  ],
+  "availability": "PARTNER_ONLY",
+  "who": "Platforms onboarding sellers",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Partner Referrals",
+  "version": "GitHub v2.5",
+  "source": "github-spec",
+  "method": "GET",
+  "path": "/v2/customer/partner-referrals/{partner_referral_id}",
+  "operation": "partner-referrals.read",
+  "summary": "Show referral data",
+  "scopes": [
+   "customer/partner-referrals",
+   "customer/partner-referrals/readwrite"
+  ],
+  "availability": "PARTNER_ONLY",
+  "who": "Platforms onboarding sellers",
+  "voice_tier": "T0",
+  "voice": []
+ },
+ {
+  "api": "Invoices",
+  "version": "GitHub v2.6",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v2/invoicing/invoices",
+  "operation": "invoices.create",
+  "summary": "Create draft invoice",
+  "scopes": [
+   "invoicing/invoices/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": [
+   "invoice_create"
+  ]
+ },
+ {
+  "api": "Invoices",
+  "version": "GitHub v2.6",
+  "source": "github-spec",
+  "method": "GET",
+  "path": "/v2/invoicing/invoices",
+  "operation": "invoices.list",
+  "summary": "List invoices",
+  "scopes": [
+   "invoicing/invoices/read"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T0",
+  "voice": [
+   "invoices"
+  ]
+ },
+ {
+  "api": "Invoices",
+  "version": "GitHub v2.6",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v2/invoicing/invoices/{invoice_id}/send",
+  "operation": "invoices.send",
+  "summary": "Send invoice",
+  "scopes": [
+   "invoicing/invoices/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T2",
+  "voice": [
+   "invoice_create"
+  ]
+ },
+ {
+  "api": "Invoices",
+  "version": "GitHub v2.6",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v2/invoicing/invoices/{invoice_id}/remind",
+  "operation": "invoices.remind",
+  "summary": "Send invoice reminder",
+  "scopes": [
+   "invoicing/invoices/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": [
+   "invoice_remind"
+  ]
+ },
+ {
+  "api": "Invoices",
+  "version": "GitHub v2.6",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v2/invoicing/invoices/{invoice_id}/cancel",
+  "operation": "invoices.cancel",
+  "summary": "Cancel sent invoice",
+  "scopes": [
+   "invoicing/invoices/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T2",
+  "voice": [
+   "invoice_cancel"
+  ]
+ },
+ {
+  "api": "Invoices",
+  "version": "GitHub v2.6",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v2/invoicing/invoices/{invoice_id}/payments",
+  "operation": "invoices.payments",
+  "summary": "Record payment for invoice",
+  "scopes": [
+   "invoicing/invoices/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": [
+   "invoice_mark_paid"
+  ]
+ },
+ {
+  "api": "Invoices",
+  "version": "GitHub v2.6",
+  "source": "github-spec",
+  "method": "DELETE",
+  "path": "/v2/invoicing/invoices/{invoice_id}/payments/{transaction_id}",
+  "operation": "invoices.payments-delete",
+  "summary": "Delete external payment",
+  "scopes": [
+   "invoicing/invoices/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T2",
+  "voice": []
+ },
+ {
+  "api": "Invoices",
+  "version": "GitHub v2.6",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v2/invoicing/invoices/{invoice_id}/refunds",
+  "operation": "invoices.refunds",
+  "summary": "Record refund for invoice",
+  "scopes": [
+   "invoicing/invoices/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T2",
+  "voice": []
+ },
+ {
+  "api": "Invoices",
+  "version": "GitHub v2.6",
+  "source": "github-spec",
+  "method": "DELETE",
+  "path": "/v2/invoicing/invoices/{invoice_id}/refunds/{transaction_id}",
+  "operation": "invoices.refunds-delete",
+  "summary": "Delete external refund",
+  "scopes": [
+   "invoicing/invoices/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T2",
+  "voice": []
+ },
+ {
+  "api": "Invoices",
+  "version": "GitHub v2.6",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v2/invoicing/invoices/{invoice_id}/generate-qr-code",
+  "operation": "invoices.generate-qr-code",
+  "summary": "Generate QR code",
+  "scopes": [
+   "invoicing/invoices/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Invoices",
+  "version": "GitHub v2.6",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v2/invoicing/generate-next-invoice-number",
+  "operation": "invoicing.generate-next-invoice-number",
+  "summary": "Generate invoice number",
+  "scopes": [
+   "invoicing/invoices/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": [
+   "invoice_create"
+  ]
+ },
+ {
+  "api": "Invoices",
+  "version": "GitHub v2.6",
+  "source": "github-spec",
+  "method": "GET",
+  "path": "/v2/invoicing/invoices/{invoice_id}",
+  "operation": "invoices.get",
+  "summary": "Show invoice details",
+  "scopes": [
+   "invoicing/invoices/read"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T0",
+  "voice": [
+   "invoice_details"
+  ]
+ },
+ {
+  "api": "Invoices",
+  "version": "GitHub v2.6",
+  "source": "github-spec",
+  "method": "PUT",
+  "path": "/v2/invoicing/invoices/{invoice_id}",
+  "operation": "invoices.update",
+  "summary": "Fully update invoice",
+  "scopes": [
+   "invoicing/invoices/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Invoices",
+  "version": "GitHub v2.6",
+  "source": "github-spec",
+  "method": "DELETE",
+  "path": "/v2/invoicing/invoices/{invoice_id}",
+  "operation": "invoices.delete",
+  "summary": "Delete invoice",
+  "scopes": [
+   "invoicing/invoices/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T2",
+  "voice": []
+ },
+ {
+  "api": "Invoices",
+  "version": "GitHub v2.6",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v2/invoicing/search-invoices",
+  "operation": "invoices.search-invoices",
+  "summary": "Search for invoices",
+  "scopes": [
+   "invoicing/invoices/read"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": [
+   "invoices"
+  ]
+ },
+ {
+  "api": "Invoices",
+  "version": "GitHub v2.6",
+  "source": "github-spec",
+  "method": "GET",
+  "path": "/v2/invoicing/templates",
+  "operation": "templates.list",
+  "summary": "List templates",
+  "scopes": [
+   "invoicing/invoices/read"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T0",
+  "voice": []
+ },
+ {
+  "api": "Invoices",
+  "version": "GitHub v2.6",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v2/invoicing/templates",
+  "operation": "templates.create",
+  "summary": "Create template",
+  "scopes": [
+   "invoicing/invoices/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Invoices",
+  "version": "GitHub v2.6",
+  "source": "github-spec",
+  "method": "GET",
+  "path": "/v2/invoicing/templates/{template_id}",
+  "operation": "templates.get",
+  "summary": "Show template details",
+  "scopes": [
+   "invoicing/invoices/read"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T0",
+  "voice": []
+ },
+ {
+  "api": "Invoices",
+  "version": "GitHub v2.6",
+  "source": "github-spec",
+  "method": "PUT",
+  "path": "/v2/invoicing/templates/{template_id}",
+  "operation": "templates.update",
+  "summary": "Fully update template",
+  "scopes": [
+   "invoicing/invoices/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Invoices",
+  "version": "GitHub v2.6",
+  "source": "github-spec",
+  "method": "DELETE",
+  "path": "/v2/invoicing/templates/{template_id}",
+  "operation": "templates.delete",
+  "summary": "Delete template",
+  "scopes": [
+   "invoicing/invoices/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T2",
+  "voice": []
+ },
+ {
+  "api": "Invoices",
+  "version": "GitHub v2.6",
+  "source": "github-spec",
+  "method": "GET",
+  "path": "/v2/invoicing/accounting-sync/merchant/connections",
+  "operation": "connections.get",
+  "summary": "List Connections.",
+  "scopes": [
+   "invoicing/internal",
+   "invoicing/invoices/read",
+   "invoicing/invoices/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T0",
+  "voice": []
+ },
+ {
+  "api": "Invoices",
+  "version": "GitHub v2.6",
+  "source": "github-spec",
+  "method": "GET",
+  "path": "/v2/invoicing/accounting-sync/invoices/{id}/connections",
+  "operation": "invoice_connection_details.get",
+  "summary": "List Connection Status for an Invoice.",
+  "scopes": [
+   "invoicing/internal",
+   "invoicing/invoices/read",
+   "invoicing/invoices/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T0",
+  "voice": []
+ },
+ {
+  "api": "Webhooks Management",
+  "version": "GitHub v1.11",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v1/notifications/webhooks",
+  "operation": "webhooks.post",
+  "summary": "Create webhook",
+  "scopes": [
+   "applications/webhooks"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Webhooks Management",
+  "version": "GitHub v1.11",
+  "source": "github-spec",
+  "method": "GET",
+  "path": "/v1/notifications/webhooks",
+  "operation": "webhooks.list",
+  "summary": "List webhooks",
+  "scopes": [
+   "applications/webhooks"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T0",
+  "voice": []
+ },
+ {
+  "api": "Webhooks Management",
+  "version": "GitHub v1.11",
+  "source": "github-spec",
+  "method": "GET",
+  "path": "/v1/notifications/webhooks/{webhook_id}",
+  "operation": "webhooks.get",
+  "summary": "Show webhook details",
+  "scopes": [
+   "applications/webhooks"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T0",
+  "voice": []
+ },
+ {
+  "api": "Webhooks Management",
+  "version": "GitHub v1.11",
+  "source": "github-spec",
+  "method": "PATCH",
+  "path": "/v1/notifications/webhooks/{webhook_id}",
+  "operation": "webhooks.update",
+  "summary": "Update webhook",
+  "scopes": [
+   "applications/webhooks"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Webhooks Management",
+  "version": "GitHub v1.11",
+  "source": "github-spec",
+  "method": "DELETE",
+  "path": "/v1/notifications/webhooks/{webhook_id}",
+  "operation": "webhooks.delete",
+  "summary": "Delete webhook",
+  "scopes": [
+   "applications/webhooks"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T2",
+  "voice": []
+ },
+ {
+  "api": "Webhooks Management",
+  "version": "GitHub v1.11",
+  "source": "github-spec",
+  "method": "GET",
+  "path": "/v1/notifications/webhooks/{webhook_id}/event-types",
+  "operation": "event-types.list",
+  "summary": "List event subscriptions for webhook",
+  "scopes": [
+   "applications/webhooks"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T0",
+  "voice": []
+ },
+ {
+  "api": "Webhooks Management",
+  "version": "GitHub v1.11",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v1/notifications/webhooks-lookup",
+  "operation": "webhooks-lookup.post",
+  "summary": "Create webhook lookup",
+  "scopes": [
+   "applications/webhooks"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Webhooks Management",
+  "version": "GitHub v1.11",
+  "source": "github-spec",
+  "method": "GET",
+  "path": "/v1/notifications/webhooks-lookup",
+  "operation": "webhooks-lookup.list",
+  "summary": "List webhook lookups",
+  "scopes": [
+   "applications/webhooks"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T0",
+  "voice": []
+ },
+ {
+  "api": "Webhooks Management",
+  "version": "GitHub v1.11",
+  "source": "github-spec",
+  "method": "GET",
+  "path": "/v1/notifications/webhooks-lookup/{webhook_lookup_id}",
+  "operation": "webhooks-lookup.get",
+  "summary": "Show webhook lookup details",
+  "scopes": [
+   "applications/webhooks"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T0",
+  "voice": []
+ },
+ {
+  "api": "Webhooks Management",
+  "version": "GitHub v1.11",
+  "source": "github-spec",
+  "method": "DELETE",
+  "path": "/v1/notifications/webhooks-lookup/{webhook_lookup_id}",
+  "operation": "webhooks-lookup.delete",
+  "summary": "Delete webhook lookup",
+  "scopes": [
+   "applications/webhooks"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T2",
+  "voice": []
+ },
+ {
+  "api": "Webhooks Management",
+  "version": "GitHub v1.11",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v1/notifications/verify-webhook-signature",
+  "operation": "verify-webhook-signature.post",
+  "summary": "Verify webhook signature",
+  "scopes": [
+   "applications/verify-webhook-signature",
+   "applications/webhooks"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Webhooks Management",
+  "version": "GitHub v1.11",
+  "source": "github-spec",
+  "method": "GET",
+  "path": "/v1/notifications/webhooks-event-types",
+  "operation": "webhooks-event-types.list",
+  "summary": "List available events",
+  "scopes": [],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T0",
+  "voice": []
+ },
+ {
+  "api": "Webhooks Management",
+  "version": "GitHub v1.11",
+  "source": "github-spec",
+  "method": "GET",
+  "path": "/v1/notifications/webhooks-events",
+  "operation": "webhooks-events.list",
+  "summary": "List event notifications",
+  "scopes": [
+   "applications/webhooks"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T0",
+  "voice": []
+ },
+ {
+  "api": "Webhooks Management",
+  "version": "GitHub v1.11",
+  "source": "github-spec",
+  "method": "GET",
+  "path": "/v1/notifications/webhooks-events/{event_id}",
+  "operation": "webhooks-events.get",
+  "summary": "Show event notification details",
+  "scopes": [
+   "applications/webhooks"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T0",
+  "voice": []
+ },
+ {
+  "api": "Webhooks Management",
+  "version": "GitHub v1.11",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v1/notifications/webhooks-events/{event_id}/resend",
+  "operation": "webhooks-events.resend",
+  "summary": "Resend event notification",
+  "scopes": [
+   "applications/webhooks"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T2",
+  "voice": []
+ },
+ {
+  "api": "Webhooks Management",
+  "version": "GitHub v1.11",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v1/notifications/simulate-event",
+  "operation": "simulate-event.post",
+  "summary": "Simulate webhook event",
+  "scopes": [
+   "applications/webhooks"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Payment Experience Web Profiles",
+  "version": "GitHub v1.3",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v1/payment-experience/web-profiles",
+  "operation": "web-profile.create",
+  "summary": "Create web experience profile",
+  "scopes": [
+   "payments/payment",
+   "payments/realtimepayment"
+  ],
+  "availability": "LEGACY",
+  "who": "Profiles for the v1 Payments API",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Payment Experience Web Profiles",
+  "version": "GitHub v1.3",
+  "source": "github-spec",
+  "method": "GET",
+  "path": "/v1/payment-experience/web-profiles",
+  "operation": "web-profile.get-list",
+  "summary": "List web experience profiles",
+  "scopes": [
+   "payments/payment",
+   "payments/realtimepayment"
+  ],
+  "availability": "LEGACY",
+  "who": "Profiles for the v1 Payments API",
+  "voice_tier": "T0",
+  "voice": []
+ },
+ {
+  "api": "Payment Experience Web Profiles",
+  "version": "GitHub v1.3",
+  "source": "github-spec",
+  "method": "PUT",
+  "path": "/v1/payment-experience/web-profiles/{id}",
+  "operation": "web-profile.update",
+  "summary": "Update web experience profile",
+  "scopes": [
+   "payments/payment",
+   "payments/realtimepayment"
+  ],
+  "availability": "LEGACY",
+  "who": "Profiles for the v1 Payments API",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Payment Experience Web Profiles",
+  "version": "GitHub v1.3",
+  "source": "github-spec",
+  "method": "PATCH",
+  "path": "/v1/payment-experience/web-profiles/{id}",
+  "operation": "web-profile.partial-update",
+  "summary": "Partially update web experience profile",
+  "scopes": [
+   "payments/payment",
+   "payments/realtimepayment"
+  ],
+  "availability": "LEGACY",
+  "who": "Profiles for the v1 Payments API",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Payment Experience Web Profiles",
+  "version": "GitHub v1.3",
+  "source": "github-spec",
+  "method": "GET",
+  "path": "/v1/payment-experience/web-profiles/{id}",
+  "operation": "web-profile.get",
+  "summary": "Show web experience profile details by ID",
+  "scopes": [
+   "payments/payment",
+   "payments/realtimepayment"
+  ],
+  "availability": "LEGACY",
+  "who": "Profiles for the v1 Payments API",
+  "voice_tier": "T0",
+  "voice": []
+ },
+ {
+  "api": "Payment Experience Web Profiles",
+  "version": "GitHub v1.3",
+  "source": "github-spec",
+  "method": "DELETE",
+  "path": "/v1/payment-experience/web-profiles/{id}",
+  "operation": "web-profile.delete",
+  "summary": "Delete web experience profile",
+  "scopes": [
+   "payments/payment",
+   "payments/realtimepayment"
+  ],
+  "availability": "LEGACY",
+  "who": "Profiles for the v1 Payments API",
+  "voice_tier": "T2",
+  "voice": []
+ },
+ {
+  "api": "Payments",
+  "version": "GitHub v2.12",
+  "source": "github-spec",
+  "method": "GET",
+  "path": "/v2/payments/authorizations/{authorization_id}",
+  "operation": "authorizations.get",
+  "summary": "Show details for authorized payment",
+  "scopes": [
+   "payments/payment/authcapture"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T0",
+  "voice": []
+ },
+ {
+  "api": "Payments",
+  "version": "GitHub v2.12",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v2/payments/authorizations/{authorization_id}/capture",
+  "operation": "authorizations.capture",
+  "summary": "Capture authorized payment",
+  "scopes": [
+   "payments/payment/authcapture"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T2",
+  "voice": []
+ },
+ {
+  "api": "Payments",
+  "version": "GitHub v2.12",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v2/payments/authorizations/{authorization_id}/reauthorize",
+  "operation": "authorizations.reauthorize",
+  "summary": "Reauthorize authorized payment",
+  "scopes": [
+   "payments/payment/authcapture"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T2",
+  "voice": []
+ },
+ {
+  "api": "Payments",
+  "version": "GitHub v2.12",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v2/payments/authorizations/{authorization_id}/void",
+  "operation": "authorizations.void",
+  "summary": "Void authorized payment",
+  "scopes": [
+   "payments/payment/authcapture"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T2",
+  "voice": []
+ },
+ {
+  "api": "Payments",
+  "version": "GitHub v2.12",
+  "source": "github-spec",
+  "method": "GET",
+  "path": "/v2/payments/captures/{capture_id}",
+  "operation": "captures.get",
+  "summary": "Show captured payment details",
+  "scopes": [
+   "payments/payment/authcapture"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T0",
+  "voice": []
+ },
+ {
+  "api": "Payments",
+  "version": "GitHub v2.12",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v2/payments/captures/{capture_id}/refund",
+  "operation": "captures.refund",
+  "summary": "Refund captured payment",
+  "scopes": [
+   "payments/refund"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T2",
+  "voice": [
+   "refund"
+  ]
+ },
+ {
+  "api": "Payments",
+  "version": "GitHub v2.12",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v2/payments/find-eligible-methods",
+  "operation": "find.eligible.methods",
+  "summary": "Find a list of eligible payment methods.",
+  "scopes": [
+   "Braintree:PaymentsReady",
+   "payments/client-payments-eligibility",
+   "payments/payments-ready",
+   "payments/realtimepayment"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Payments",
+  "version": "GitHub v2.12",
+  "source": "github-spec",
+  "method": "GET",
+  "path": "/v2/payments/refunds/{refund_id}",
+  "operation": "refunds.get",
+  "summary": "Show refund details",
+  "scopes": [
+   "payments/refund"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T0",
+  "voice": [
+   "refund_status"
+  ]
+ },
+ {
+  "api": "Payouts",
+  "version": "GitHub v1.9",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v1/payments/payouts",
+  "operation": "payouts.post",
+  "summary": "Create batch payout",
+  "scopes": [
+   "payments/payouts"
+  ],
+  "availability": "NEEDS_APPROVAL",
+  "who": "Business account with Payouts enabled",
+  "voice_tier": "T2",
+  "voice": [
+   "payout"
+  ]
+ },
+ {
+  "api": "Payouts",
+  "version": "GitHub v1.9",
+  "source": "github-spec",
+  "method": "GET",
+  "path": "/v1/payments/payouts/{id}",
+  "operation": "payouts.get",
+  "summary": "Show payout batch details",
+  "scopes": [
+   "payments/payouts"
+  ],
+  "availability": "NEEDS_APPROVAL",
+  "who": "Business account with Payouts enabled",
+  "voice_tier": "T0",
+  "voice": [
+   "payout_status"
+  ]
+ },
+ {
+  "api": "Payouts",
+  "version": "GitHub v1.9",
+  "source": "github-spec",
+  "method": "GET",
+  "path": "/v1/payments/payouts-item/{payout_item_id}",
+  "operation": "payouts-item.get",
+  "summary": "Show payout item details",
+  "scopes": [
+   "payments/payouts"
+  ],
+  "availability": "NEEDS_APPROVAL",
+  "who": "Business account with Payouts enabled",
+  "voice_tier": "T0",
+  "voice": []
+ },
+ {
+  "api": "Payouts",
+  "version": "GitHub v1.9",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v1/payments/payouts-item/{payout_item_id}/cancel",
+  "operation": "payouts-item.cancel",
+  "summary": "Cancel unclaimed payout item",
+  "scopes": [
+   "payments/payouts"
+  ],
+  "availability": "NEEDS_APPROVAL",
+  "who": "Business account with Payouts enabled",
+  "voice_tier": "T2",
+  "voice": []
+ },
+ {
+  "api": "Transaction Search",
+  "version": "GitHub v1.9",
+  "source": "github-spec",
+  "method": "GET",
+  "path": "/v1/reporting/transactions",
+  "operation": "search.get",
+  "summary": "List transactions",
+  "scopes": [
+   "reporting/search/read"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Own account; third parties need the PayPal partner network",
+  "voice_tier": "T0",
+  "voice": [
+   "activity",
+   "find_payment",
+   "refund"
+  ]
+ },
+ {
+  "api": "Transaction Search",
+  "version": "GitHub v1.9",
+  "source": "github-spec",
+  "method": "GET",
+  "path": "/v1/reporting/balances",
+  "operation": "balances.get",
+  "summary": "List all balances",
+  "scopes": [
+   "reporting/balances/read"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Own account; third parties need the PayPal partner network",
+  "voice_tier": "T0",
+  "voice": [
+   "balance"
+  ]
+ },
+ {
+  "api": "Shipment Tracking",
+  "version": "GitHub v1.9",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v1/shipping/trackers-batch",
+  "operation": "trackers-batch.post",
+  "summary": "Add tracking information for multiple PayPal transactions",
+  "scopes": [
+   "shipping/trackers/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Shipment Tracking",
+  "version": "GitHub v1.9",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v1/shipping/trackers",
+  "operation": "trackers.post",
+  "summary": "Add tracking information for PayPal transaction",
+  "scopes": [
+   "shipping/trackers/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Shipment Tracking",
+  "version": "GitHub v1.9",
+  "source": "github-spec",
+  "method": "GET",
+  "path": "/v1/shipping/trackers",
+  "operation": "trackers-batch.get",
+  "summary": "List tracking information",
+  "scopes": [
+   "shipping/trackers/read",
+   "shipping/trackers/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T0",
+  "voice": []
+ },
+ {
+  "api": "Shipment Tracking",
+  "version": "GitHub v1.9",
+  "source": "github-spec",
+  "method": "PUT",
+  "path": "/v1/shipping/trackers/{id}",
+  "operation": "trackers.put",
+  "summary": "Update or cancel tracking information for PayPal transaction",
+  "scopes": [
+   "shipping/trackers/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Shipment Tracking",
+  "version": "GitHub v1.9",
+  "source": "github-spec",
+  "method": "GET",
+  "path": "/v1/shipping/trackers/{id}",
+  "operation": "trackers.get",
+  "summary": "Show tracking information",
+  "scopes": [
+   "shipping/trackers/read",
+   "shipping/trackers/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T0",
+  "voice": []
+ },
+ {
+  "api": "Payment Method Tokens",
+  "version": "GitHub v3.4",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v3/vault/payment-tokens",
+  "operation": "payment-tokens.create",
+  "summary": "Create payment token for a given payment source",
+  "scopes": [
+   "vault/payment-tokens/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Merchant vaulting for its customers",
+  "voice_tier": "T2",
+  "voice": []
+ },
+ {
+  "api": "Payment Method Tokens",
+  "version": "GitHub v3.4",
+  "source": "github-spec",
+  "method": "GET",
+  "path": "/v3/vault/payment-tokens",
+  "operation": "customer.payment-tokens.get",
+  "summary": "List all payment tokens",
+  "scopes": [
+   "vault/payment-tokens/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Merchant vaulting for its customers",
+  "voice_tier": "T0",
+  "voice": []
+ },
+ {
+  "api": "Payment Method Tokens",
+  "version": "GitHub v3.4",
+  "source": "github-spec",
+  "method": "GET",
+  "path": "/v3/vault/payment-tokens/{id}",
+  "operation": "payment-tokens.get",
+  "summary": "Retrieve a payment token",
+  "scopes": [
+   "vault/payment-tokens/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Merchant vaulting for its customers",
+  "voice_tier": "T0",
+  "voice": []
+ },
+ {
+  "api": "Payment Method Tokens",
+  "version": "GitHub v3.4",
+  "source": "github-spec",
+  "method": "DELETE",
+  "path": "/v3/vault/payment-tokens/{id}",
+  "operation": "payment-tokens.delete",
+  "summary": "Delete payment token",
+  "scopes": [
+   "vault/payment-tokens/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Merchant vaulting for its customers",
+  "voice_tier": "T2",
+  "voice": []
+ },
+ {
+  "api": "Payment Method Tokens",
+  "version": "GitHub v3.4",
+  "source": "github-spec",
+  "method": "POST",
+  "path": "/v3/vault/setup-tokens",
+  "operation": "setup-tokens.create",
+  "summary": "Create a setup token",
+  "scopes": [
+   "vault/payment-tokens/read"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Merchant vaulting for its customers",
+  "voice_tier": "T2",
+  "voice": []
+ },
+ {
+  "api": "Payment Method Tokens",
+  "version": "GitHub v3.4",
+  "source": "github-spec",
+  "method": "GET",
+  "path": "/v3/vault/setup-tokens/{id}",
+  "operation": "setup-tokens.get",
+  "summary": "Retrieve a setup token",
+  "scopes": [
+   "vault/payment-tokens/read"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Merchant vaulting for its customers",
+  "voice_tier": "T0",
+  "voice": []
+ },
+ {
+  "api": "Transaction Search",
+  "version": "site v1.10",
+  "source": "developer-site",
+  "method": "GET",
+  "path": "/v1/reporting/get-balance-net-summary",
+  "operation": "accounting.balanceNetSummary.get",
+  "summary": "List all balance and net activity summary",
+  "scopes": [
+   "reporting/dataapiserv/balance-net-activity/read"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T0",
+  "voice": []
+ },
+ {
+  "api": "Transaction Search",
+  "version": "site v1.10",
+  "source": "developer-site",
+  "method": "GET",
+  "path": "/v1/reporting/get-daily-summary",
+  "operation": "accounting.dailySummary.get",
+  "summary": "List all daily summary",
+  "scopes": [
+   "reporting/dataapiserv/daily/read"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T0",
+  "voice": []
+ },
+ {
+  "api": "Invoices",
+  "version": "site v2.12",
+  "source": "developer-site",
+  "method": "GET",
+  "path": "/v2/invoicing/invoices/{id}/conditional-rules",
+  "operation": "get-invoice-conditional-rules",
+  "summary": "Retrieves all conditional rules for a given Invoice",
+  "scopes": [
+   "invoicing/invoices/read"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T0",
+  "voice": []
+ },
+ {
+  "api": "Invoices",
+  "version": "site v2.12",
+  "source": "developer-site",
+  "method": "POST",
+  "path": "/v2/invoicing/invoices/{id}/conditional-rules",
+  "operation": "create-conditional-rules",
+  "summary": "Create conditional rules",
+  "scopes": [
+   "invoicing/invoices/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Invoices",
+  "version": "site v2.12",
+  "source": "developer-site",
+  "method": "GET",
+  "path": "/v2/invoicing/invoices/{id}/conditional-rules/{conditional_rule_id}",
+  "operation": "get-invoice-conditional-rule-by-id",
+  "summary": "Retrieve the conditional rule details for an Invoice",
+  "scopes": [
+   "invoicing/invoices/read"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T0",
+  "voice": []
+ },
+ {
+  "api": "Invoices",
+  "version": "site v2.12",
+  "source": "developer-site",
+  "method": "PUT",
+  "path": "/v2/invoicing/invoices/{id}/conditional-rules/{conditional_rule_id}",
+  "operation": "update-conditional-rule",
+  "summary": "Fully update conditional rule",
+  "scopes": [
+   "invoicing/invoices/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Invoices",
+  "version": "site v2.12",
+  "source": "developer-site",
+  "method": "DELETE",
+  "path": "/v2/invoicing/invoices/{id}/conditional-rules/{conditional_rule_id}",
+  "operation": "delete-invoice-conditional-rule",
+  "summary": "Delete the conditional rule details from the Invoice",
+  "scopes": [
+   "invoicing/invoices/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T2",
+  "voice": []
+ },
+ {
+  "api": "Invoices",
+  "version": "site v2.12",
+  "source": "developer-site",
+  "method": "POST",
+  "path": "/v2/invoicing/recurring-invoices",
+  "operation": "recurring_invoices.create",
+  "summary": "Create a recurring invoice series",
+  "scopes": [
+   "invoicing/invoices/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Invoices",
+  "version": "site v2.12",
+  "source": "developer-site",
+  "method": "GET",
+  "path": "/v2/invoicing/recurring-invoices/{id}",
+  "operation": "recurring_invoices.get",
+  "summary": "Get recurring invoice series details",
+  "scopes": [
+   "invoicing/invoices/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T0",
+  "voice": []
+ },
+ {
+  "api": "Invoices",
+  "version": "site v2.12",
+  "source": "developer-site",
+  "method": "PUT",
+  "path": "/v2/invoicing/recurring-invoices/{id}",
+  "operation": "recurring_invoices.update",
+  "summary": "Update recurring invoice series details",
+  "scopes": [
+   "invoicing/invoices/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Invoices",
+  "version": "site v2.12",
+  "source": "developer-site",
+  "method": "DELETE",
+  "path": "/v2/invoicing/recurring-invoices/{id}",
+  "operation": "recurring_invoices.delete",
+  "summary": "Delete recurring invoice series",
+  "scopes": [
+   "invoicing/invoices/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T2",
+  "voice": []
+ },
+ {
+  "api": "Invoices",
+  "version": "site v2.12",
+  "source": "developer-site",
+  "method": "POST",
+  "path": "/v2/invoicing/recurring-invoices/{id}/activate",
+  "operation": "recurring_invoices.activate",
+  "summary": "Activate recurring invoice series",
+  "scopes": [
+   "invoicing/invoices/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Invoices",
+  "version": "site v2.12",
+  "source": "developer-site",
+  "method": "POST",
+  "path": "/v2/invoicing/recurring-invoices/{id}/cancel",
+  "operation": "recurring_invoices.cancel",
+  "summary": "Cancel an active recurring invoice series",
+  "scopes": [
+   "invoicing/invoices/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T2",
+  "voice": []
+ },
+ {
+  "api": "Invoices",
+  "version": "site v2.12",
+  "source": "developer-site",
+  "method": "GET",
+  "path": "/v2/invoicing/recurring-invoices/{id}/conditional-rules",
+  "operation": "get-recurring-invoice-conditional-rules",
+  "summary": "Retrieves all conditional rules for a given recurring invoice",
+  "scopes": [
+   "invoicing/invoices/read"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T0",
+  "voice": []
+ },
+ {
+  "api": "Invoices",
+  "version": "site v2.12",
+  "source": "developer-site",
+  "method": "POST",
+  "path": "/v2/invoicing/recurring-invoices/{id}/conditional-rules",
+  "operation": "create-recurring-invoice-conditional-rules",
+  "summary": "Create conditional rules for a recurring invoice",
+  "scopes": [
+   "invoicing/invoices/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Invoices",
+  "version": "site v2.12",
+  "source": "developer-site",
+  "method": "GET",
+  "path": "/v2/invoicing/recurring-invoices/{id}/conditional-rules/{conditional_rule_id}",
+  "operation": "get-recurring-invoice-conditional-rule-by-id",
+  "summary": "Retrieve a conditional rule for a recurring invoice",
+  "scopes": [
+   "invoicing/invoices/read"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T0",
+  "voice": []
+ },
+ {
+  "api": "Invoices",
+  "version": "site v2.12",
+  "source": "developer-site",
+  "method": "PUT",
+  "path": "/v2/invoicing/recurring-invoices/{id}/conditional-rules/{conditional_rule_id}",
+  "operation": "update-recurring-invoice-conditional-rule",
+  "summary": "Fully update a conditional rule for a recurring invoice",
+  "scopes": [
+   "invoicing/invoices/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Invoices",
+  "version": "site v2.12",
+  "source": "developer-site",
+  "method": "DELETE",
+  "path": "/v2/invoicing/recurring-invoices/{id}/conditional-rules/{conditional_rule_id}",
+  "operation": "delete-recurring-invoice-conditional-rule",
+  "summary": "Delete a conditional rule from a recurring invoice",
+  "scopes": [
+   "invoicing/invoices/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T2",
+  "voice": []
+ },
+ {
+  "api": "Invoices",
+  "version": "site v2.12",
+  "source": "developer-site",
+  "method": "POST",
+  "path": "/v2/invoicing/setup-reminders",
+  "operation": "auto-reminder-configuration.setup",
+  "summary": "Setup auto reminder configuration",
+  "scopes": [
+   "invoicing/invoices/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Invoices",
+  "version": "site v2.12",
+  "source": "developer-site",
+  "method": "GET",
+  "path": "/v2/invoicing/reminders",
+  "operation": "auto-reminder-configuration.get-all",
+  "summary": "Get all invoice auto reminder configuration",
+  "scopes": [
+   "invoicing/invoices/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T0",
+  "voice": []
+ },
+ {
+  "api": "Invoices",
+  "version": "site v2.12",
+  "source": "developer-site",
+  "method": "GET",
+  "path": "/v2/invoicing/reminders/{id}",
+  "operation": "auto-reminder-configuration.get",
+  "summary": "Retrieve an invoice auto reminder configuration",
+  "scopes": [
+   "invoicing/invoices/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T0",
+  "voice": []
+ },
+ {
+  "api": "Invoices",
+  "version": "site v2.12",
+  "source": "developer-site",
+  "method": "PUT",
+  "path": "/v2/invoicing/reminders/{id}",
+  "operation": "auto-reminder-configuration.update",
+  "summary": "Update invoice auto reminder configuration",
+  "scopes": [
+   "invoicing/invoices/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Invoices",
+  "version": "site v2.12",
+  "source": "developer-site",
+  "method": "POST",
+  "path": "/v2/invoicing/reminders/{id}/suspend",
+  "operation": "auto-reminder-configuration.suspend",
+  "summary": "Suspend invoice auto reminder configuration",
+  "scopes": [
+   "invoicing/invoices/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T2",
+  "voice": []
+ },
+ {
+  "api": "Invoices",
+  "version": "site v2.12",
+  "source": "developer-site",
+  "method": "POST",
+  "path": "/v2/invoicing/reminders/{id}/resume",
+  "operation": "auto-reminder-configuration.resume",
+  "summary": "Resume invoice auto reminder configuration",
+  "scopes": [
+   "invoicing/invoices/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Invoices",
+  "version": "site v2.12",
+  "source": "developer-site",
+  "method": "POST",
+  "path": "/v2/invoicing/invoices/{id}/cancel-reminders",
+  "operation": "invoices.cancel-reminders",
+  "summary": "Cancel auto reminders for an invoice",
+  "scopes": [
+   "invoicing/invoices/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T2",
+  "voice": []
+ },
+ {
+  "api": "Invoices",
+  "version": "site v2.12",
+  "source": "developer-site",
+  "method": "POST",
+  "path": "/v2/invoicing/search-recurring-invoices",
+  "operation": "recurring_invoices.search",
+  "summary": "Search recurring invoices series",
+  "scopes": [
+   "invoicing/invoices/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Orders",
+  "version": "site v2.36",
+  "source": "developer-site",
+  "method": "GET",
+  "path": "/v2/checkout/callback/certs/{cert_id}",
+  "operation": "certs.get",
+  "summary": "Get public callback verification certificate",
+  "scopes": [],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T0",
+  "voice": []
+ },
+ {
+  "api": "Subscriptions",
+  "version": "site v1.11",
+  "source": "developer-site",
+  "method": "GET",
+  "path": "/v1/billing/subscriptions",
+  "operation": "subscriptions.list",
+  "summary": "List subscriptions",
+  "scopes": [
+   "subscriptions"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T0",
+  "voice": [
+   "subscriptions"
+  ]
+ },
+ {
+  "api": "Payment Links and Buttons",
+  "version": "site v1.8",
+  "source": "developer-site",
+  "method": "POST",
+  "path": "/v1/checkout/payment-resources",
+  "operation": "payment-resources.post",
+  "summary": "Creates a payment resource for a single-item purchase",
+  "scopes": [
+   "checkout/payment-resources/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": [
+   "payment_link"
+  ]
+ },
+ {
+  "api": "Payment Links and Buttons",
+  "version": "site v1.8",
+  "source": "developer-site",
+  "method": "GET",
+  "path": "/v1/checkout/payment-resources",
+  "operation": "payment-resources.get.list",
+  "summary": "List payment resources",
+  "scopes": [
+   "checkout/payment-resources/read"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T0",
+  "voice": []
+ },
+ {
+  "api": "Payment Links and Buttons",
+  "version": "site v1.8",
+  "source": "developer-site",
+  "method": "GET",
+  "path": "/v1/checkout/payment-resources/{id}",
+  "operation": "payment-resources.get.byId",
+  "summary": "Retrieve a payment resource",
+  "scopes": [
+   "checkout/payment-resources/read"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T0",
+  "voice": []
+ },
+ {
+  "api": "Payment Links and Buttons",
+  "version": "site v1.8",
+  "source": "developer-site",
+  "method": "PUT",
+  "path": "/v1/checkout/payment-resources/{id}",
+  "operation": "payment-resources.put.byId",
+  "summary": "Replace a payment resource",
+  "scopes": [
+   "checkout/payment-resources/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Payment Links and Buttons",
+  "version": "site v1.8",
+  "source": "developer-site",
+  "method": "DELETE",
+  "path": "/v1/checkout/payment-resources/{id}",
+  "operation": "payment-resources.delete.byId",
+  "summary": "Delete a payment resource",
+  "scopes": [
+   "checkout/payment-resources/readwrite"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T2",
+  "voice": []
+ },
+ {
+  "api": "Currency Exchange",
+  "version": "site v2.17",
+  "source": "developer-site",
+  "method": "POST",
+  "path": "/v2/pricing/quote-exchange-rates",
+  "operation": "quote_exchange_rates",
+  "summary": "Create Exchange Rate Quote",
+  "scopes": [
+   "pricing/quote-exchange-rates/read"
+  ],
+  "availability": "GA_OWN_ACCOUNT",
+  "who": "Acts on the API caller's own business account",
+  "voice_tier": "T1",
+  "voice": [
+   "exchange_rate"
+  ]
+ },
+ {
+  "api": "Identity",
+  "version": "site v1.0",
+  "source": "developer-site",
+  "method": "GET",
+  "path": "/v1/identity/openidconnect/userinfo",
+  "operation": "userinfo.get",
+  "summary": "Show user profile details",
+  "scopes": [
+   "(user token)"
+  ],
+  "availability": "LIMITED_RELEASE",
+  "who": "Signed-in PayPal user (Log in with PayPal)",
+  "voice_tier": "T0",
+  "voice": [
+   "whoami"
+  ]
+ },
+ {
+  "api": "Personal Payments v1 (limited release)",
+  "version": "site v1.19",
+  "source": "developer-site",
+  "method": "POST",
+  "path": "/v1/payments/personal-payments/assess-capabilities",
+  "operation": "personal-payments.assess-capabilities",
+  "summary": "",
+  "scopes": [
+   "consumer/personal-payments/capabilities/read"
+  ],
+  "availability": "LIMITED_RELEASE",
+  "who": "Signed-in personal PayPal user; app approved by PayPal",
+  "voice_tier": "T1",
+  "voice": [
+   "send_capabilities"
+  ]
+ },
+ {
+  "api": "Personal Payments v1 (limited release)",
+  "version": "site v1.19",
+  "source": "developer-site",
+  "method": "POST",
+  "path": "/v1/payments/personal-payments/evaluate-eligibility",
+  "operation": "personal-payments.evaluate-eligibility",
+  "summary": "",
+  "scopes": [
+   "wallet/sendmoney/evaluate-eligibility"
+  ],
+  "availability": "LIMITED_RELEASE",
+  "who": "Signed-in personal PayPal user; app approved by PayPal",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Personal Payments v1 (limited release)",
+  "version": "site v1.19",
+  "source": "developer-site",
+  "method": "POST",
+  "path": "/v1/payments/personal-payments/funding-options",
+  "operation": "personal-payments.funding-options",
+  "summary": "",
+  "scopes": [
+   "wallet/sendmoney",
+   "wallet/financial-instruments/view",
+   "payments/onetouchpayment"
+  ],
+  "availability": "LIMITED_RELEASE",
+  "who": "Signed-in personal PayPal user; app approved by PayPal",
+  "voice_tier": "T1",
+  "voice": [
+   "fee_check"
+  ]
+ },
+ {
+  "api": "Personal Payments v1 (limited release)",
+  "version": "site v1.19",
+  "source": "developer-site",
+  "method": "POST",
+  "path": "/v1/payments/personal-payments",
+  "operation": "personal-payments.post",
+  "summary": "",
+  "scopes": [
+   "wallet/sendmoney",
+   "wallet/financial-instruments/view",
+   "payments/onetouchpayment"
+  ],
+  "availability": "LIMITED_RELEASE",
+  "who": "Signed-in personal PayPal user; app approved by PayPal",
+  "voice_tier": "T2",
+  "voice": []
+ },
+ {
+  "api": "Personal Payments v1 (limited release)",
+  "version": "site v1.19",
+  "source": "developer-site",
+  "method": "POST",
+  "path": "/v1/payments/personal-payments/pay",
+  "operation": "personal-payments.pay",
+  "summary": "Creates a payment and moves money using the default funding configured for the account and partner.",
+  "scopes": [
+   "wallet/sendmoney",
+   "payments/onetouchpayment"
+  ],
+  "availability": "LIMITED_RELEASE",
+  "who": "Signed-in personal PayPal user; app approved by PayPal",
+  "voice_tier": "T2",
+  "voice": []
+ },
+ {
+  "api": "Personal Payments v1 (limited release)",
+  "version": "site v1.19",
+  "source": "developer-site",
+  "method": "GET",
+  "path": "/v1/payments/personal-payments/{transaction_id}",
+  "operation": "personal-payments.get",
+  "summary": "",
+  "scopes": [
+   "consumer/personal-payments-tokens/readwrite"
+  ],
+  "availability": "LIMITED_RELEASE",
+  "who": "Signed-in personal PayPal user; app approved by PayPal",
+  "voice_tier": "T0",
+  "voice": []
+ },
+ {
+  "api": "Personal Payments v1 (limited release)",
+  "version": "site v1.19",
+  "source": "developer-site",
+  "method": "POST",
+  "path": "/v1/payments/personal-payment-tokens",
+  "operation": "personal-payment-tokens.post",
+  "summary": "",
+  "scopes": [
+   "consumer/personal-payments-tokens/readwrite"
+  ],
+  "availability": "LIMITED_RELEASE",
+  "who": "Signed-in personal PayPal user; app approved by PayPal",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Personal Payments v1 (limited release)",
+  "version": "site v1.19",
+  "source": "developer-site",
+  "method": "GET",
+  "path": "/v1/payments/personal-payment-tokens/{id}",
+  "operation": "personal-payment-tokens.get",
+  "summary": "",
+  "scopes": [],
+  "availability": "LIMITED_RELEASE",
+  "who": "Signed-in personal PayPal user; app approved by PayPal",
+  "voice_tier": "T0",
+  "voice": []
+ },
+ {
+  "api": "Personal Payments v1 (limited release)",
+  "version": "site v1.19",
+  "source": "developer-site",
+  "method": "POST",
+  "path": "/v1/payments/personal-payments/authorizations",
+  "operation": "personal-payments.authorizations",
+  "summary": "",
+  "scopes": [
+   "consumer/personal-payments/authorizations/readwrite"
+  ],
+  "availability": "LIMITED_RELEASE",
+  "who": "Signed-in personal PayPal user; app approved by PayPal",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Personal Payments v1 (limited release)",
+  "version": "site v1.19",
+  "source": "developer-site",
+  "method": "POST",
+  "path": "/v1/payments/personal-payments/authorizations/{id}/capture",
+  "operation": "authorizations.capture",
+  "summary": "",
+  "scopes": [
+   "consumer/personal-payments/authorizations/readwrite"
+  ],
+  "availability": "LIMITED_RELEASE",
+  "who": "Signed-in personal PayPal user; app approved by PayPal",
+  "voice_tier": "T2",
+  "voice": []
+ },
+ {
+  "api": "Personal Payments v1 (limited release)",
+  "version": "site v1.19",
+  "source": "developer-site",
+  "method": "POST",
+  "path": "/v1/payments/personal-payments/authorizations/{authorization_id}/void",
+  "operation": "authorizations.void",
+  "summary": "",
+  "scopes": [
+   "consumer/personal-payments/authorizations/readwrite"
+  ],
+  "availability": "LIMITED_RELEASE",
+  "who": "Signed-in personal PayPal user; app approved by PayPal",
+  "voice_tier": "T2",
+  "voice": []
+ },
+ {
+  "api": "Personal Payments v1 (limited release)",
+  "version": "site v1.19",
+  "source": "developer-site",
+  "method": "GET",
+  "path": "/v1/payments/personal-payments/authorizations/{id}",
+  "operation": "authorizations.get",
+  "summary": "",
+  "scopes": [],
+  "availability": "LIMITED_RELEASE",
+  "who": "Signed-in personal PayPal user; app approved by PayPal",
+  "voice_tier": "T0",
+  "voice": []
+ },
+ {
+  "api": "Personal Payments v1 (limited release)",
+  "version": "site v1.19",
+  "source": "developer-site",
+  "method": "POST",
+  "path": "/v1/payments/refunds",
+  "operation": "payments.refunds",
+  "summary": "",
+  "scopes": [
+   "personal-payments/refunds/readwrite",
+   "payments/refund"
+  ],
+  "availability": "LIMITED_RELEASE",
+  "who": "Signed-in personal PayPal user; app approved by PayPal",
+  "voice_tier": "T2",
+  "voice": []
+ },
+ {
+  "api": "Personal Payments v2 (limited release)",
+  "version": "guide only",
+  "source": "developer-site-guide",
+  "method": "POST",
+  "path": "/v2/personal-payments/tokens",
+  "operation": "v2.tokens.create",
+  "summary": "PAYPAL_UI pattern",
+  "scopes": [],
+  "availability": "LIMITED_RELEASE",
+  "who": "Signed-in personal PayPal user; app approved by PayPal (p2papiapproval@paypal.com)",
+  "voice_tier": "T2",
+  "voice": [
+   "send_money"
+  ]
+ },
+ {
+  "api": "Personal Payments v2 (limited release)",
+  "version": "guide only",
+  "source": "developer-site-guide",
+  "method": "GET",
+  "path": "/v2/personal-payments/tokens/{token_id}",
+  "operation": "v2.tokens.get",
+  "summary": "PAYPAL_UI pattern",
+  "scopes": [],
+  "availability": "LIMITED_RELEASE",
+  "who": "Signed-in personal PayPal user; app approved by PayPal (p2papiapproval@paypal.com)",
+  "voice_tier": "T0",
+  "voice": [
+   "payment_status"
+  ]
+ },
+ {
+  "api": "Personal Payments v2 (limited release)",
+  "version": "guide only",
+  "source": "developer-site-guide",
+  "method": "POST",
+  "path": "/v2/personal-payments/evaluate-funding-options",
+  "operation": "v2.evaluate-funding-options",
+  "summary": "PARTNER_UI pattern",
+  "scopes": [],
+  "availability": "LIMITED_RELEASE",
+  "who": "Signed-in personal PayPal user; app approved by PayPal (p2papiapproval@paypal.com)",
+  "voice_tier": "T1",
+  "voice": []
+ },
+ {
+  "api": "Personal Payments v2 (limited release)",
+  "version": "guide only",
+  "source": "developer-site-guide",
+  "method": "POST",
+  "path": "/v2/personal-payments/payments",
+  "operation": "v2.payments.create",
+  "summary": "PARTNER_UI pattern",
+  "scopes": [],
+  "availability": "LIMITED_RELEASE",
+  "who": "Signed-in personal PayPal user; app approved by PayPal (p2papiapproval@paypal.com)",
+  "voice_tier": "T1",
+  "voice": []
+ }
+]

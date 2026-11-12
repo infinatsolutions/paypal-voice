@@ -1,0 +1,10 @@
+PayPal Voice
+Copyright (c) 2026 Infinat Solutions. Licensed under the MIT License (see LICENSE).
+
+Third-party material
+- specs/*.json: PayPal REST API OpenAPI specifications, (c) PayPal, Apache License 2.0
+  (https://github.com/paypal/paypal-rest-api-specifications). See specs/README.md and specs/LICENSE.
+
+Trademarks
+PayPal is a trademark of PayPal, Inc. This is an independent hackathon project. It is not affiliated with,
+endorsed by, or sponsored by PayPal.
